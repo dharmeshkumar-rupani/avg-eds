@@ -402,6 +402,7 @@ main .section.columns-awards-container {
   margin: 48px auto 80px;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
 
 main .section.columns-awards-container > .default-content-wrapper {
