@@ -1,0 +1,327 @@
+/* Section-level: wider container + heading layout */
+.carousel-blog-container > .default-content-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  max-width: 1360px;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-blog-container > .default-content-wrapper h2 {
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 60px;
+  margin: 0;
+}
+
+.carousel-blog-container > .default-content-wrapper p {
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* "See all articles" as plain blue link with arrow (not button) */
+.carousel-blog-container > .default-content-wrapper p a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 2px;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: rgb(42 125 225);
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.carousel-blog-container > .default-content-wrapper p a:any-link::after {
+  content: '→';
+}
+
+.carousel-blog-container > .default-content-wrapper p a:any-link:hover {
+  text-decoration: underline;
+}
+
+.carousel-blog-container > .carousel-blog-wrapper {
+  max-width: none;
+  padding: 0;
+  overflow: visible;
+}
+
+.carousel-blog-container {
+  padding: 88px 0 56px !important;
+  overflow: hidden;
+}
+
+/* === Slides container === */
+.carousel-blog .carousel-blog-slides-container {
+  position: relative;
+}
+
+/* === Slide list === */
+.carousel-blog .carousel-blog-slides,
+.carousel-blog .carousel-blog-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-blog .carousel-blog-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: auto hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel-blog .carousel-blog-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* === Individual slide (card) === */
+.carousel-blog .carousel-blog-slide {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: auto;
+  padding: 0 16px 0 0;
+}
+
+/* === Card image === */
+.carousel-blog .carousel-blog-slide .carousel-blog-slide-image {
+  position: relative;
+  inset: auto;
+}
+
+.carousel-blog .carousel-blog-slide .carousel-blog-slide-image picture {
+  position: relative;
+  inset: auto;
+  display: block;
+}
+
+.carousel-blog .carousel-blog-slide .carousel-blog-slide-image picture > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.46;
+  object-fit: cover;
+  display: block;
+}
+
+/* === Card content === */
+.carousel-blog .carousel-blog-slide .carousel-blog-slide-content {
+  z-index: 1;
+  margin: 0;
+  padding: 16px 0 0;
+  color: var(--text-color);
+  background-color: transparent;
+  position: relative;
+  width: auto;
+}
+
+/* === Slide headings === */
+.carousel-blog .carousel-blog-slide-content h2 {
+  font-size: 20px;
+  font-weight: 900;
+  font-family: var(--heading-font-family);
+  line-height: 26px;
+  color: rgb(30 34 42);
+  margin: 0 0 16px;
+}
+
+/* === Slide paragraph (excerpt text) === */
+.carousel-blog .carousel-blog-slide-content p {
+  font-size: 14px;
+  font-family: var(--body-font-family);
+  line-height: 21px;
+  color: rgb(75 85 99);
+  margin: 0 0 30px;
+}
+
+/* stylelint-disable no-descending-specificity -- slide links vs section heading link never overlap */
+
+/* === Slide links / "Read More" === */
+.carousel-blog .carousel-blog-slide-content a:any-link {
+  color: rgb(42 125 225);
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.carousel-blog .carousel-blog-slide-content a:hover {
+  text-decoration: underline;
+}
+
+.carousel-blog .carousel-blog-slide-content a::after {
+  content: '  →';
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* === Button reset === */
+main .carousel-blog a.button:any-link {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  color: rgb(42 125 225);
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  display: inline;
+  white-space: normal;
+}
+
+main .carousel-blog a.button:hover {
+  background-color: transparent;
+  border: none;
+  color: rgb(42 125 225);
+  text-decoration: underline;
+}
+
+main .carousel-blog p.button-container {
+  margin: 0;
+}
+
+/* === Dot indicators === */
+.carousel-blog .carousel-blog-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px 0 0;
+  background-color: transparent;
+  line-height: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-blog .carousel-blog-slide-indicator button {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(199 205 215);
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.carousel-blog .carousel-blog-slide-indicator button:disabled,
+.carousel-blog .carousel-blog-slide-indicator button:hover,
+.carousel-blog .carousel-blog-slide-indicator button:focus-visible {
+  background-color: var(--brand-green);
+}
+
+/* === Prev/Next navigation buttons === */
+.carousel-blog .carousel-blog-navigation-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-blog .carousel-blog-navigation-buttons button {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  border: 1px solid rgb(199 205 215);
+  background-color: rgb(255 255 255);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.carousel-blog .carousel-blog-navigation-buttons button:hover,
+.carousel-blog .carousel-blog-navigation-buttons button:focus-visible {
+  border-color: rgb(150 155 165);
+  background-color: rgb(245 245 245);
+}
+
+.carousel-blog .carousel-blog-navigation-buttons button.slide-next {
+  background-color: var(--brand-green);
+  border-color: var(--brand-green);
+}
+
+.carousel-blog .carousel-blog-navigation-buttons button.slide-next:hover,
+.carousel-blog .carousel-blog-navigation-buttons button.slide-next:focus-visible {
+  background-color: #006b32;
+  border-color: #006b32;
+}
+
+/* Arrow icons via pseudo-elements */
+.carousel-blog .carousel-blog-navigation-buttons button::after {
+  display: block;
+  content: '';
+  border: 2px solid rgb(30 34 42);
+  border-bottom: 0;
+  border-left: 0;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-blog .carousel-blog-navigation-buttons button.slide-next::after {
+  border-color: #fff;
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+.carousel-blog .carousel-blog-navigation-buttons button.slide-prev::after {
+  border-color: rgb(30 34 42);
+}
+
+/* === Desktop layout: 3 clear + 4th peeking + fade edges === */
+@media (width >= 900px) {
+  .carousel-blog .carousel-blog-slides-container {
+    mask-image: linear-gradient(to right, transparent 0%, black 11%, black 89%, transparent 100%);
+  }
+
+  .carousel-blog .carousel-blog-slides {
+    scroll-padding-inline-start: calc((100vw - 1110px) / 2);
+  }
+
+  .carousel-blog .carousel-blog-slide {
+    flex: 0 0 370px;
+    padding: 0 10px 0 0;
+  }
+
+  .carousel-blog .carousel-blog-slide:first-child {
+    margin-left: calc((100vw - 1110px) / 2);
+  }
+
+  .carousel-blog .carousel-blog-slide:last-child {
+    margin-right: calc((100vw - 1110px) / 2);
+  }
+
+  .carousel-blog .carousel-blog-navigation-buttons {
+    position: absolute;
+    top: 50%;
+    right: calc((100vw - 1110px) / 2);
+    transform: translateY(-100%);
+    padding: 0;
+    z-index: 2;
+  }
+}
+
+/* === Tablet layout (2 cards visible) === */
+@media (width >= 600px) and (width < 900px) {
+  .carousel-blog .carousel-blog-slide {
+    flex: 0 0 50%;
+    padding: 0 20px 0 0;
+  }
+}

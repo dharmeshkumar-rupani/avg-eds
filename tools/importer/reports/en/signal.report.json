@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "url": "https://www.avg.com/en/signal",
+  "path": "en/signal",
+  "timestamp": "2026-05-13T22:14:48.622Z",
+  "title": "AVG Signal Blog | Online Security, Privacy & Performance",
+  "template": "blog-homepage",
+  "blocks": [
+    "hero-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "cards-blog",
+    "tabs-sidebar"
+  ]
+}

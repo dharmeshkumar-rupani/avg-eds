@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-product",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-ww/homepage#mac",
+    "originPage": "AVG product homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "spacious",
+    "purpose": "product-hero",
+    "imagePattern": "background"
+  },
+  "contentPattern": {
+    "structure": "heading + paragraph + CTA + trust signals",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product landing pages",
+      "homepage hero sections",
+      "marketing landing pages with background images"
+    ],
+    "notSuitableFor": [
+      "blog post pages",
+      "documentation pages",
+      "simple text-only hero sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ww/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-13T21:29:00.000Z"
+  }
+}

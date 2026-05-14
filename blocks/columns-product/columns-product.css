@@ -1,0 +1,275 @@
+/* Section-level: wider container + light background */
+.columns-product-container > .columns-product-wrapper {
+  max-width: 1360px;
+  padding: 0 20px;
+}
+
+.columns-product-container {
+  background-color: #fff;
+  padding: 88px 0 !important;
+}
+
+/* Base / mobile-first styles */
+.columns-product {
+  color: var(--text-color);
+}
+
+.columns-product > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns-product > div > div {
+  order: 1;
+}
+
+.columns-product > div > .columns-product-img-col {
+  order: 0;
+}
+
+.columns-product > div > .columns-product-img-col img {
+  display: block;
+  width: 100%;
+}
+
+/* Text cell */
+.columns-product > div > div:not(.columns-product-img-col) {
+  padding: 24px 0 0;
+}
+
+/* Product icon + name row */
+.columns-product > div > div:not(.columns-product-img-col) > p:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 22px;
+  color: var(--text-color);
+  margin: 0 0 8px;
+}
+
+.columns-product > div > div:not(.columns-product-img-col) > p:first-child picture {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.columns-product > div > div:not(.columns-product-img-col) > p:first-child img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Platform icons row */
+.columns-product > div > div:not(.columns-product-img-col) > p:nth-child(2):has(picture + picture) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.columns-product > div > div:not(.columns-product-img-col) > p:nth-child(2):has(picture + picture) img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* H2 heading */
+.columns-product h2 {
+  font-size: 28px;
+  font-weight: 900;
+  font-family: var(--heading-font-family);
+  line-height: 1.3;
+  color: rgb(30 34 42);
+  margin: 0 0 16px;
+}
+
+/* stylelint-disable no-descending-specificity -- h2+p and p:first-child never overlap */
+
+/* Description paragraph after h2 */
+.columns-product > div > div:not(.columns-product-img-col) > h2 + p {
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  line-height: 22px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* CTA paragraph spacing */
+.columns-product > div > div:not(.columns-product-img-col) > h2 ~ p:has(> a) {
+  margin: 0;
+}
+
+.columns-product > div > div:not(.columns-product-img-col) > h2 + p + p:has(> a) {
+  margin-top: 0;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* Mac icon on green download CTA */
+.columns-product > div > div:not(.columns-product-img-col) > p:has(> a[href*="download"]) a[href*="download"]::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z'/%3E%3C/svg%3E") no-repeat center / contain;
+  flex-shrink: 0;
+}
+
+/* All CTA links -- base button styles */
+.columns-product > div > div:not(.columns-product-img-col) > p:has(> a) a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+  text-decoration: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  background-color: var(--brand-green);
+  color: #fff;
+  border: 2px solid var(--brand-green);
+}
+
+.columns-product > div > div:not(.columns-product-img-col) > p:has(> a) a:hover {
+  background-color: #006b32;
+  border-color: #006b32;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Solo CTA -- blue filled button */
+.columns-product > div > div:not(.columns-product-img-col) > p:last-child:has(> a) a {
+  background-color: rgb(42 125 225);
+  color: #fff;
+  border: 2px solid rgb(42 125 225);
+  gap: 8px;
+}
+
+.columns-product > div > div:not(.columns-product-img-col) > p:last-child:has(> a) a::after {
+  content: '→';
+  font-size: 18px;
+}
+
+.columns-product > div > div:not(.columns-product-img-col) > p:last-child:has(> a) a:hover {
+  background-color: rgb(30 100 200);
+  border-color: rgb(30 100 200);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* stylelint-disable no-descending-specificity -- paired CTA overrides solo CTA intentionally */
+
+/* When two CTAs: second one gets blue outline style */
+.columns-product > div > div:not(.columns-product-img-col) > p:has(> a) + p:last-child:has(> a) a {
+  background-color: #fff;
+  color: rgb(42 125 225);
+  border: 1px solid rgb(42 125 225);
+  min-width: 180px;
+  height: 56px;
+  padding: 0 24px;
+}
+
+.columns-product > div > div:not(.columns-product-img-col) > p:has(> a) + p:last-child:has(> a) a:hover {
+  background-color: rgb(42 125 225 / 8%);
+  color: rgb(42 100 180);
+  border-color: rgb(42 100 180);
+  text-decoration: none;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* Dark section overrides */
+main .section.dark .columns-product > div > div:not(.columns-product-img-col) p {
+  color: #fff;
+}
+
+main .section.dark .columns-product > div > div:not(.columns-product-img-col) > p:last-child:has(> a) a {
+  background-color: #fff;
+  color: rgb(42 125 225);
+  border: 1px solid #fff;
+}
+
+main .section.dark .columns-product > div > div:not(.columns-product-img-col) > p:last-child:has(> a) a:hover {
+  background-color: rgb(230 235 245);
+  color: rgb(30 100 200);
+  border-color: rgb(230 235 245);
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .columns-product > div {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .columns-product > div > div {
+    flex: 0 1 50%;
+    order: unset;
+  }
+
+  .columns-product > div > .columns-product-img-col {
+    order: unset;
+    padding: 0 20px;
+  }
+
+  .columns-product > div > div:not(.columns-product-img-col) {
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .columns-product h2 {
+    font-size: 46px;
+    line-height: 60px;
+  }
+
+  .columns-product > div > div:not(.columns-product-img-col) > p,
+  .columns-product > div > div:not(.columns-product-img-col) > h2 {
+    width: 100%;
+    flex-shrink: 0;
+  }
+
+  .columns-product > div > div:not(.columns-product-img-col) > p:has(> a) {
+    width: auto;
+    align-self: center;
+  }
+}
+
+/* EDS button auto-decoration override */
+main .columns-product a.button:any-link {
+  min-width: 180px;
+  height: 56px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+main .columns-product h2 + p + p a.button:any-link {
+  background-color: var(--brand-green);
+  border-color: var(--brand-green);
+  color: #fff;
+}
+
+main .columns-product h2 + p + p + p a.button:any-link {
+  background-color: #fff;
+  border-color: rgb(42 125 225);
+  color: rgb(42 125 225);
+}
+
+.columns-product p.button-container {
+  margin: 0;
+}
+
+.columns-product h2 + p + p.button-container {
+  margin-top: 24px;
+}
