@@ -1,0 +1,19 @@
+:root {
+  --heading-font-family: "Roboto", arial, helvetica, sans-serif;
+  --body-font-family: "Roboto", arial, helvetica, sans-serif;
+  --background-color: #fff;
+  --text-color: #1e222a;
+  --link-color: #6d768d;
+  --link-hover-color: #1e222a;
+  --brand-green: #008941;
+  --brand-dark: #1c222e;
+  --section-padding: 60px;
+  --nav-height: 92px;
+  --content-max-width: 1140px;
+  --heading-size-xxl: 42px;
+  --heading-size-xl: 34px;
+  --heading-size-l: 24px;
+  --heading-size-m: 20px;
+  --heading-size-s: 18px;
+  --heading-size-xs: 16px;
+}

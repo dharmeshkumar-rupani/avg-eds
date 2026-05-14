@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-product",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-ww/homepage#mac",
+    "originPage": "AVG product homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "compact",
+    "purpose": "product-bundle",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "4 cards each with icon + title + description + CTA link",
+    "buttonCount": 4,
+    "imageCount": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product bundle showcases",
+      "feature cards with icons and descriptions",
+      "service/product listing with CTAs"
+    ],
+    "notSuitableFor": [
+      "blog article cards with large thumbnails",
+      "team member profiles",
+      "image gallery cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ww/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-13T21:29:00.000Z"
+  }
+}

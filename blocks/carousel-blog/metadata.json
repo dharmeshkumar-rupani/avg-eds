@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-blog",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-ww/homepage#mac",
+    "originPage": "AVG product homepage",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "standard",
+    "purpose": "blog-articles",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "7 slides each with thumbnail image + title + excerpt + Read More link",
+    "buttonCount": 7,
+    "imageCount": 7
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "blog article carousels",
+      "news/article sliding galleries",
+      "content recommendation carousels"
+    ],
+    "notSuitableFor": [
+      "full-width hero image carousels",
+      "product feature slideshows",
+      "testimonial carousels"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ww/homepage", "/en/signal/what-is-malicious-code"],
+    "reuseCount": 2,
+    "lastUsed": "2026-05-13T21:46:00.000Z"
+  }
+}

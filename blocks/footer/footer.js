@@ -16,5 +16,8 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
+  // remove leaked head elements (meta, link, script) from fragment
+  footer.querySelectorAll(':scope > meta, :scope > link, :scope > script, :scope > noscript').forEach((el) => el.remove());
+
   block.append(footer);
 }

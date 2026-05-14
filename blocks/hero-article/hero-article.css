@@ -1,0 +1,196 @@
+/*
+ * Hero Article Block
+ * Article detail hero with white background, description, and CTA button.
+ * Source: https://www.avg.com/en/signal/what-is-malicious-code
+ *
+ * Decorated DOM (after EDS + decorate):
+ *   .hero-article.block
+ *     div (row 1) -> image cell (picture)
+ *     div (row 2) -> text cell (h1, p desc, p > a CTA)
+ *
+ * On desktop, the source has a 2-column layout:
+ *   left col (~42%) = text (category, h1, desc, CTA, awards)
+ *   right col (~58%) = hero image
+ */
+
+/* --- Wrapper: full-width block --- */
+.hero-article-wrapper {
+  max-width: unset !important;
+  padding: 0 !important;
+}
+
+/* --- Block root --- */
+.hero-article {
+  background-color: var(--background-color); /* rgb(255, 255, 255) */
+  color: var(--text-color); /* rgb(30, 34, 42) */
+  padding: 0 24px;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+/* --- Mobile: stack vertically --- */
+
+/* Rows */
+.hero-article > div {
+  display: flex;
+  flex-flow: column;
+}
+
+/* Cells */
+.hero-article > div > div {
+  width: 100%;
+}
+
+/* Image row (row 1) */
+.hero-article > div:first-child {
+  order: 1;
+}
+
+/* Text row (row 2) */
+.hero-article > div:last-child {
+  order: 2;
+  padding: 42px 0 0;
+}
+
+/* --- H1 --- */
+.hero-article h1 {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: var(--heading-font-family); /* Roboto */
+  line-height: 1.25;
+  color: var(--text-color); /* rgb(30, 34, 42) */
+  margin: 0 0 16px;
+}
+
+/* --- Description paragraph --- */
+.hero-article p {
+  font-size: 18px;
+  font-family: var(--body-font-family); /* Roboto */
+  line-height: 1.5;
+  color: rgb(77 85 102);
+  margin: 0 0 20px;
+}
+
+/* --- Links --- */
+.hero-article a:any-link {
+  color: var(--text-color); /* rgb(30, 34, 42) */
+  text-decoration: none;
+}
+
+/* --- CTA Button --- */
+main .hero-article a.button:any-link {
+  background-color: var(--brand-green); /* rgb(0, 137, 65) */
+  color: #fff;
+  padding: 16px 32px;
+  border: 0 none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  display: inline-block;
+  text-align: center;
+  white-space: normal;
+  max-width: 100%;
+}
+
+main .hero-article a.button:hover,
+main .hero-article a.button:focus-visible {
+  background-color: #006b32;
+  color: #fff;
+}
+
+/* --- Button wrapper paragraph --- */
+.hero-article p.button-container {
+  margin: 20px 0 0;
+}
+
+/* --- Images --- */
+.hero-article picture {
+  display: block;
+  line-height: 0;
+}
+
+.hero-article img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- No-image variant (no picture in row 1) --- */
+.hero-article.no-image > div:first-child {
+  display: none;
+}
+
+.hero-article.no-image {
+  padding-top: 42px;
+  padding-bottom: 30px;
+}
+
+.hero-article.no-image > div:last-child {
+  padding-top: 0;
+}
+
+/* === Desktop === */
+@media (width >= 900px) {
+  .hero-article {
+    padding: 42px 25px 0;
+  }
+
+  /* Row becomes side-by-side flex layout */
+  .hero-article > div {
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  /* Image row: reset order for desktop */
+  .hero-article > div:first-child {
+    order: unset;
+  }
+
+  .hero-article > div:last-child {
+    order: unset;
+  }
+
+  /* Text cell */
+  .hero-article > div:last-child > div {
+    flex: 0 0 42%;
+    max-width: 42%;
+    padding: 0 15px 46px 0;
+  }
+
+  /* H1 at desktop size */
+  .hero-article h1 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  /* Description at desktop size */
+  .hero-article p {
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0 0 30px;
+  }
+
+  /* CTA Button at desktop size */
+  main .hero-article a.button:any-link {
+    padding: 21px 32px;
+    font-size: 20px;
+  }
+
+  /* Image cell */
+  .hero-article > div:first-child > div {
+    flex: 0 0 58%;
+    max-width: 58%;
+  }
+
+  /* No-image variant desktop */
+  .hero-article.no-image {
+    padding: 42px 25px 30px;
+  }
+
+  .hero-article.no-image > div:last-child > div {
+    flex: 0 0 60%;
+    max-width: 60%;
+    padding-bottom: 0;
+  }
+}

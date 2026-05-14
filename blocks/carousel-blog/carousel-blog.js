@@ -1,0 +1,154 @@
+function updateActiveSlide(slide) {
+  const block = slide.closest('.carousel-blog');
+  const slideIndex = parseInt(slide.dataset.slideIndex, 10);
+  block.dataset.activeSlide = slideIndex;
+
+  const slides = block.querySelectorAll('.carousel-blog-slide');
+
+  slides.forEach((aSlide, idx) => {
+    aSlide.setAttribute('aria-hidden', idx !== slideIndex);
+    aSlide.querySelectorAll('a').forEach((link) => {
+      if (idx !== slideIndex) {
+        link.setAttribute('tabindex', '-1');
+      } else {
+        link.removeAttribute('tabindex');
+      }
+    });
+  });
+
+  const indicators = block.querySelectorAll('.carousel-blog-slide-indicator');
+  indicators.forEach((indicator, idx) => {
+    if (idx !== slideIndex) {
+      indicator.querySelector('button').removeAttribute('disabled');
+    } else {
+      indicator.querySelector('button').setAttribute('disabled', 'true');
+    }
+  });
+}
+
+export function showSlide(block, slideIndex = 0) {
+  const slides = block.querySelectorAll('.carousel-blog-slide');
+  if (!slides.length) return;
+  let realSlideIndex = Number.isNaN(slideIndex) ? 0 : slideIndex;
+  if (realSlideIndex < 0) realSlideIndex = slides.length - 1;
+  if (realSlideIndex >= slides.length) realSlideIndex = 0;
+  const activeSlide = slides[realSlideIndex];
+  if (!activeSlide) return;
+
+  activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
+  const slidesList = block.querySelector('.carousel-blog-slides');
+  const scrollPadding = parseInt(getComputedStyle(slidesList).scrollPaddingInlineStart, 10) || 0;
+  slidesList.scrollTo({
+    top: 0,
+    left: activeSlide.offsetLeft - scrollPadding,
+    behavior: 'smooth',
+  });
+}
+
+function bindEvents(block) {
+  const slideIndicators = block.querySelector('.carousel-blog-slide-indicators');
+  if (!slideIndicators) return;
+
+  slideIndicators.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const slideIndicator = e.currentTarget.parentElement;
+      showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
+    });
+  });
+
+  block.querySelector('.slide-prev').addEventListener('click', () => {
+    const current = parseInt(block.dataset.activeSlide, 10) || 0;
+    showSlide(block, current - 1);
+  });
+  block.querySelector('.slide-next').addEventListener('click', () => {
+    const current = parseInt(block.dataset.activeSlide, 10) || 0;
+    showSlide(block, current + 1);
+  });
+
+  const slideObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) updateActiveSlide(entry.target);
+    });
+  }, { threshold: 0.5 });
+  block.querySelectorAll('.carousel-blog-slide').forEach((slide) => {
+    slideObserver.observe(slide);
+  });
+}
+
+function createSlide(row, slideIndex, carouselId) {
+  const slide = document.createElement('li');
+  slide.dataset.slideIndex = slideIndex;
+  slide.setAttribute('id', `carousel-blog-${carouselId}-slide-${slideIndex}`);
+  slide.classList.add('carousel-blog-slide');
+
+  row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
+    column.classList.add(`carousel-blog-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    slide.append(column);
+  });
+
+  const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
+  if (labeledBy) {
+    slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
+  }
+
+  return slide;
+}
+
+let carouselId = 0;
+export default async function decorate(block) {
+  carouselId += 1;
+  block.setAttribute('id', `carousel-blog-${carouselId}`);
+  const rows = block.querySelectorAll(':scope > div');
+  const isSingleSlide = rows.length < 2;
+
+  block.setAttribute('role', 'region');
+  block.setAttribute('aria-roledescription', 'Carousel');
+  block.dataset.activeSlide = 0;
+
+  const container = document.createElement('div');
+  container.classList.add('carousel-blog-slides-container');
+
+  const slidesWrapper = document.createElement('ul');
+  slidesWrapper.classList.add('carousel-blog-slides');
+  block.prepend(slidesWrapper);
+
+  let slideIndicators;
+  if (!isSingleSlide) {
+    const slideIndicatorsNav = document.createElement('nav');
+    slideIndicatorsNav.setAttribute('aria-label', 'Carousel Slide Controls');
+    slideIndicators = document.createElement('ol');
+    slideIndicators.classList.add('carousel-blog-slide-indicators');
+    slideIndicatorsNav.append(slideIndicators);
+    block.append(slideIndicatorsNav);
+
+    const slideNavButtons = document.createElement('div');
+    slideNavButtons.classList.add('carousel-blog-navigation-buttons');
+    slideNavButtons.innerHTML = `
+      <button type="button" class="slide-prev" aria-label="Previous Slide"></button>
+      <button type="button" class="slide-next" aria-label="Next Slide"></button>
+    `;
+
+    container.append(slideNavButtons);
+  }
+
+  rows.forEach((row, idx) => {
+    const slide = createSlide(row, idx, carouselId);
+    slidesWrapper.append(slide);
+
+    if (slideIndicators) {
+      const indicator = document.createElement('li');
+      indicator.classList.add('carousel-blog-slide-indicator');
+      indicator.dataset.targetSlide = idx;
+      indicator.innerHTML = `<button type="button" aria-label="Show Slide ${idx + 1} of ${rows.length}"></button>`;
+      slideIndicators.append(indicator);
+    }
+    row.remove();
+  });
+
+  container.append(slidesWrapper);
+  block.prepend(container);
+
+  if (!isSingleSlide) {
+    bindEvents(block);
+  }
+}

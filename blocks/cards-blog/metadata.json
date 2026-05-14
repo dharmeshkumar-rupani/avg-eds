@@ -1,0 +1,39 @@
+{
+  "variantName": "cards-blog",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:40:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en/signal",
+    "originPage": "AVG Signal Blog homepage/listing page",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "standard",
+    "purpose": "blog-articles",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + title link + description text per card",
+    "buttonCount": 0,
+    "imageCount": 2
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "blog article listing cards",
+      "news article grids with thumbnails",
+      "content hub article cards with images and descriptions"
+    ],
+    "notSuitableFor": [
+      "product cards with icons and CTAs",
+      "feature cards without images",
+      "team member or testimonial cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/signal"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-13T21:40:00.000Z"
+  }
+}
