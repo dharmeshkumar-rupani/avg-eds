@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-cta",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-15T16:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en/signal",
+    "originPage": "blog homepage",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "cta-bar",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "logo image + CTA button in 2 columns",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "pre-footer CTA bars",
+      "simple logo + action button layouts",
+      "compact horizontal call-to-action strips"
+    ],
+    "notSuitableFor": [
+      "multi-column content layouts",
+      "comparison layouts with rich text",
+      "image gallery columns"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/signal"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-15T16:46:00.000Z"
+  }
+}

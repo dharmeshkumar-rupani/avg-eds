@@ -1,0 +1,234 @@
+/* stylelint-disable no-descending-specificity */
+
+/* Section wrapper */
+.section.carousel-blog-container {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+  margin: 0;
+}
+
+.section.carousel-blog-container > .default-content-wrapper:first-child {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.section.carousel-blog-container > .default-content-wrapper:first-child h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e222a;
+  text-align: left;
+  margin: 0 0 24px 80px;
+  display: block;
+}
+
+@media (width >= 900px) {
+  .section.carousel-blog-container > .default-content-wrapper:first-child h2 {
+    font-size: 40px;
+  }
+}
+
+/* Override article max-width constraint */
+.section.carousel-blog-container > .carousel-blog-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+/* Carousel block */
+.carousel-blog {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Navigation buttons — grouped right, vertically centered */
+.carousel-nav {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-80%);
+  display: flex;
+  gap: 4px;
+  z-index: 3;
+}
+
+.carousel-nav button {
+  width: 56px;
+  height: 56px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.2s;
+}
+
+.carousel-nav .carousel-prev {
+  background-color: #fff;
+  border: 1px solid #5c7a8c;
+}
+
+.carousel-nav .carousel-prev:hover {
+  background-color: #f0f0f0;
+}
+
+.carousel-nav .carousel-next {
+  background-color: #008941;
+  border: 1px solid #008941;
+}
+
+.carousel-nav .carousel-next:hover {
+  background-color: #006d34;
+}
+
+.carousel-nav button::after {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.carousel-nav .carousel-prev::after {
+  border-left: 2.5px solid #1e222a;
+  border-bottom: 2.5px solid #1e222a;
+  transform: rotate(45deg);
+  margin-left: 4px;
+}
+
+.carousel-nav .carousel-next::after {
+  border-right: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  transform: rotate(-45deg);
+  margin-right: 4px;
+}
+
+.carousel-nav button[disabled] {
+  opacity: 0.4;
+  cursor: default;
+}
+
+/* Viewport with right-side fade */
+.carousel-viewport {
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-viewport::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgb(248 249 250 / 80%));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+/* Individual card */
+.carousel-card {
+  flex: 0 0 33.333%;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+@media (width < 600px) {
+  .carousel-card {
+    flex: 0 0 85%;
+  }
+}
+
+@media (width >= 600px) and (width < 900px) {
+  .carousel-card {
+    flex: 0 0 50%;
+  }
+}
+
+/* Card image */
+.carousel-card > div:first-child {
+  line-height: 0;
+  overflow: hidden;
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 216px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card text */
+.carousel-card > div:last-child {
+  padding: 16px 0;
+}
+
+.section.carousel-blog-container .carousel-blog .carousel-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e222a;
+  line-height: 1.4;
+  margin: 0 0 8px;
+  text-align: left;
+  display: block;
+}
+
+.carousel-card p {
+  margin: 0;
+}
+
+.carousel-card p a {
+  color: #2a7de1;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.carousel-card p a:hover {
+  text-decoration: underline;
+}
+
+/* Dot indicators */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+  padding: 0;
+}
+
+.carousel-dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: #c7cdd7;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s;
+}
+
+.carousel-dots button.active {
+  background-color: #008941;
+}
+
+.carousel-dots button:hover {
+  background-color: #8a929e;
+}
+
+.carousel-dots button.active:hover {
+  background-color: #006d34;
+}
+
+/* Hide extra content wrappers */
+.section.carousel-blog-container > .default-content-wrapper:not(:first-child) {
+  display: none;
+}
+
+/* stylelint-enable no-descending-specificity */

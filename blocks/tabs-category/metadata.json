@@ -1,0 +1,39 @@
+{
+  "variantName": "tabs-category",
+  "baseBlock": "tabs",
+  "version": "1.0.0",
+  "created": "2026-05-15T16:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en/signal",
+    "originPage": "blog homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "category-navigation",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + label tabs with dropdown subcategory links",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "blog category navigation bars",
+      "content hub topic selectors",
+      "sticky navigation with icon tabs"
+    ],
+    "notSuitableFor": [
+      "sidebar tabbed widgets",
+      "content panels with rich text",
+      "tabbed content without navigation purpose"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/signal"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-15T16:46:00.000Z"
+  }
+}

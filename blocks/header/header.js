@@ -124,9 +124,12 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
+  nav.querySelectorAll(':scope > meta, :scope > link, :scope > script, :scope > style').forEach((el) => el.remove());
+
   const classes = ['brand', 'sections', 'tools'];
+  const sections = [...nav.children].filter((c) => c.tagName === 'DIV');
   classes.forEach((c, i) => {
-    const section = nav.children[i];
+    const section = sections[i];
     if (section) section.classList.add(`nav-${c}`);
   });
 

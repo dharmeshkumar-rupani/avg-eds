@@ -1,0 +1,156 @@
+/* stylelint-disable no-descending-specificity */
+
+/* hero-article: 2-column layout - text left, image right */
+main > .section.hero-article-container {
+  padding: 0;
+  margin: 0 0 32px;
+}
+
+main > .section.hero-article-container > .hero-article-wrapper {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 24px 24px 0;
+}
+
+.hero-article {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+}
+
+/* Category tag (MALWARE →) */
+.hero-article .hero-article-text p:first-child a {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4d5566;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.hero-article .hero-article-text p:first-child a:hover {
+  color: #2a7de1;
+}
+
+.hero-article .hero-article-text h1 {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #1e222a;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.hero-article .hero-article-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1e222a;
+  margin: 0 0 16px;
+}
+
+/* Green CTA button */
+.hero-article .hero-article-text a.button.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: #008941;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 21px 32px;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow:
+    0 15px 35px -15px rgb(12 5 62 / 15%),
+    0 10px 30px -10px rgb(0 137 65 / 60%);
+}
+
+.hero-article .hero-article-text a.button.primary:hover {
+  background-color: #006d34;
+  border: none;
+  color: #fff;
+  box-shadow:
+    0 15px 35px -15px rgb(12 5 62 / 20%),
+    0 10px 30px -10px rgb(0 109 52 / 70%);
+}
+
+.hero-article .hero-article-text a.button.primary .cta-icon {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.hero-article .hero-article-text a.button.primary .cta-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* "Get it for" platform links */
+.hero-article .hero-article-text p:has(> a[href*="avg.sng"]) {
+  font-size: 13px;
+  color: #4d5566;
+}
+
+/* Award badges */
+.hero-article .hero-article-text p:has(picture:first-child) {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e8eaed;
+}
+
+.hero-article .hero-article-text p picture img {
+  height: 48px;
+  width: auto;
+}
+
+.hero-article .hero-article-image {
+  line-height: 0;
+}
+
+.hero-article .hero-article-image picture {
+  display: block;
+}
+
+.hero-article .hero-article-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+@media (width >= 900px) {
+  main > .section.hero-article-container > .hero-article-wrapper {
+    padding: 40px 32px 0;
+  }
+
+  .hero-article {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .hero-article .hero-article-text {
+    flex: 0 0 42%;
+    order: -1;
+  }
+
+  .hero-article .hero-article-image {
+    flex: 1;
+  }
+
+  .hero-article .hero-article-text h1 {
+    font-size: 40px;
+  }
+
+  .hero-article .hero-article-text p {
+    font-size: 17px;
+  }
+}
