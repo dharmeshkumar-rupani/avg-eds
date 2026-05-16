@@ -1,34 +1,34 @@
 {
-  "variantName": "tabs-sidebar",
-  "baseBlock": "tabs",
+  "variantName": "columns-cta",
+  "baseBlock": "columns",
   "version": "1.0.0",
   "created": "2026-05-15T16:46:00.000Z",
   "sourceContext": {
     "originUrl": "https://www.avg.com/en/signal",
     "originPage": "blog homepage",
-    "blockPosition": "middle"
+    "blockPosition": "bottom"
   },
   "visualCharacteristics": {
     "colorScheme": "light",
     "density": "compact",
-    "purpose": "sidebar-tabs",
+    "purpose": "cta-bar",
     "imagePattern": "icon"
   },
   "contentPattern": {
-    "structure": "icon + label tabs with article link lists",
-    "buttonCount": 0,
-    "imageCount": 3
+    "structure": "logo image + CTA button in 2 columns",
+    "buttonCount": 1,
+    "imageCount": 1
   },
   "reuseGuidance": {
     "suitableFor": [
-      "sidebar tabbed article widgets",
-      "sidebar category selectors with content lists",
-      "compact tabbed navigation in sidebars"
+      "pre-footer CTA bars",
+      "simple logo + action button layouts",
+      "compact horizontal call-to-action strips"
     ],
     "notSuitableFor": [
-      "full-width category navigation bars",
-      "tabbed content with rich media panels",
-      "main content area tabs"
+      "multi-column content layouts",
+      "comparison layouts with rich text",
+      "image gallery columns"
     ]
   },
   "usage": {

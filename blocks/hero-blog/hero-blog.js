@@ -1,5 +1,8 @@
 export default function decorate(block) {
-  if (!block.querySelector(':scope > div:first-child picture')) {
+  const pic = block.querySelector('picture');
+  if (!pic) {
     block.classList.add('no-image');
+    return;
   }
+  block.prepend(pic);
 }

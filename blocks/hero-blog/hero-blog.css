@@ -1,105 +1,78 @@
-/* hero-blog: full-width blog hero with dark gradient background */
+/* hero-blog: full-width banner with background image */
+main > .section.hero-blog-container {
+  padding: 0;
+  margin: 0;
+}
 
-/* Extracted values: min-height 460px, h1 48px/700/62.4px white, p 20px/30px white */
-
-/* Source: https://www.avg.com/en/signal .hp-hero-banner.hero-banner */
-
-/* Full-width: override section max-width */
-.hero-blog-wrapper {
-  max-width: 100% !important;
-  padding: 0 !important;
+main > .section.hero-blog-container > .hero-blog-wrapper {
+  max-width: unset;
+  padding: 0;
 }
 
 .hero-blog {
   position: relative;
+  min-height: 340px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 300px;
-  padding: 48px 24px;
-  background: linear-gradient(135deg, #1a1f36 0%, #2b3152 50%, #373f51 100%);
+  align-items: flex-start;
+  padding: 48px 24px 120px;
+  overflow: hidden;
 }
 
-/* Row layout */
-.hero-blog > div {
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* All text white on dark background */
-.hero-blog h1,
-.hero-blog h2,
-.hero-blog h3,
-.hero-blog h4,
-.hero-blog h5,
-.hero-blog h6 {
-  color: #fff;
-}
-
-.hero-blog h1 {
-  font-size: 36px;
-  font-weight: 700;
-  font-family: var(--heading-font-family);
-  line-height: 1.3;
-  color: #fff;
-  margin: 0 0 20px;
-}
-
-.hero-blog p,
-.hero-blog > div > div:last-child {
-  font-size: 16px;
-  font-family: var(--body-font-family);
-  line-height: 1.5;
-  color: #fff;
-  margin: 0;
-  max-width: 600px;
-}
-
-/* When there IS a background image */
 .hero-blog picture {
   position: absolute;
   z-index: -1;
   inset: 0;
-  box-sizing: border-box;
 }
 
 .hero-blog img {
   object-fit: cover;
+  object-position: right center;
   width: 100%;
   height: 100%;
 }
 
-/* No-image variant: keep the gradient background, white text */
-.hero-blog.no-image {
-  background: linear-gradient(135deg, #1a1f36 0%, #2b3152 50%, #373f51 100%);
+.hero-blog > div {
+  max-width: 1128px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* Reset EDS button auto-decoration if any links appear */
-.hero-blog a.button:any-link {
-  background-color: transparent;
-  border: none;
-  padding: 0;
+.hero-blog > div > div:first-child {
+  max-width: 500px;
+}
+
+.hero-blog h1 {
   color: #fff;
-  font-weight: 400;
-  text-decoration: underline;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 20px;
+}
+
+.hero-blog p {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.hero-blog.no-image {
+  background: linear-gradient(135deg, #1a2332 0%, #2d3e50 100%);
 }
 
 @media (width >= 900px) {
   .hero-blog {
     min-height: 460px;
-    padding: 76px 40px;
+    padding: 76px 32px 140px;
   }
 
   .hero-blog h1 {
     font-size: 48px;
-    line-height: 62.4px;
     margin: 0 0 30px;
   }
 
-  .hero-blog p,
-  .hero-blog > div > div:last-child {
+  .hero-blog p {
     font-size: 20px;
-    line-height: 30px;
   }
 }

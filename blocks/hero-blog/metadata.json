@@ -2,10 +2,10 @@
   "variantName": "hero-blog",
   "baseBlock": "hero",
   "version": "1.0.0",
-  "created": "2026-05-13T21:40:00.000Z",
+  "created": "2026-05-15T16:46:00.000Z",
   "sourceContext": {
     "originUrl": "https://www.avg.com/en/signal",
-    "originPage": "AVG Signal Blog homepage/listing page",
+    "originPage": "blog homepage",
     "blockPosition": "top"
   },
   "visualCharacteristics": {
@@ -21,19 +21,19 @@
   },
   "reuseGuidance": {
     "suitableFor": [
-      "blog homepage hero banners",
-      "blog listing page heroes",
-      "content hub landing pages with background image"
+      "blog homepage banners",
+      "content hub landing pages",
+      "category listing pages with background images"
     ],
     "notSuitableFor": [
       "product landing pages with CTAs",
-      "hero sections with multiple buttons",
-      "hero sections with trust signals or awards"
+      "article detail heroes with side-by-side images",
+      "pages needing prominent call-to-action buttons"
     ]
   },
   "usage": {
     "pagesUsing": ["/en/signal"],
     "reuseCount": 1,
-    "lastUsed": "2026-05-13T21:40:00.000Z"
+    "lastUsed": "2026-05-15T16:46:00.000Z"
   }
 }

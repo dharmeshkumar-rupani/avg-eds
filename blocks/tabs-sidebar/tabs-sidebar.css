@@ -1,79 +1,54 @@
-/* Block: tabs-sidebar -- compact sidebar tabbed widget */
-
-/* Source: https://www.avg.com/en/signal sidebar-category-tab */
-
-/* Tab bar */
+/* tabs-sidebar: compact tabbed article list for sidebar */
 .tabs-sidebar .tabs-sidebar-list {
   display: flex;
+  justify-content: space-around;
   gap: 0;
-  max-width: 100%;
-  overflow-x: auto;
-  border-bottom: 2px solid #dee2e6;
-  margin: 0;
-  padding: 0;
+  border-bottom: 1px solid #e9e8f0;
+  margin-bottom: 23px;
 }
 
-/* Tab button base (inactive) */
 .tabs-sidebar .tabs-sidebar-list button {
-  flex: 1 1 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex: 1;
   margin: 0;
   border: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid #e9e8f0;
   border-radius: 0;
-  padding: 8px 16px;
+  padding: 0 8px 15px;
   background-color: transparent;
-  color: var(--link-color);
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
+  color: #1e222a;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4;
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.2s, border-color 0.2s;
-  margin-bottom: -2px;
+  transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
-.tabs-sidebar .tabs-sidebar-list button:hover {
-  color: var(--text-color);
-}
-
-/* Strip paragraph margin inside tab buttons */
-.tabs-sidebar .tabs-sidebar-list button p,
-.tabs-sidebar .tabs-sidebar-list button h3 {
+.tabs-sidebar .tabs-sidebar-list button p {
   margin: 0;
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
-  line-height: inherit;
 }
 
-/* Active tab */
+/* stylelint-disable no-descending-specificity */
 .tabs-sidebar .tabs-sidebar-list button[aria-selected='true'] {
-  color: var(--text-color);
-  font-weight: 700;
-  border-bottom: 2px solid var(--brand-green);
-  background-color: transparent;
-  cursor: default;
+  font-weight: 600;
+  border-bottom-color: #00b451;
 }
+/* stylelint-enable no-descending-specificity */
 
-/* Tab panel */
 .tabs-sidebar .tabs-sidebar-panel {
-  margin-top: 0;
   padding: 0;
   border: none;
-  overflow: visible;
 }
 
 .tabs-sidebar .tabs-sidebar-panel[aria-hidden='true'] {
   display: none;
 }
 
-/* Article list inside panels */
 .tabs-sidebar .tabs-sidebar-panel ul {
   list-style: none;
   margin: 0;
@@ -81,57 +56,41 @@
 }
 
 .tabs-sidebar .tabs-sidebar-panel li {
-  padding: 12px 0;
-  border-bottom: 1px solid #e9ecef;
-  line-height: 1.5;
-}
-
-.tabs-sidebar .tabs-sidebar-panel li:last-child {
+  margin: 0 0 16px;
+  padding: 0;
   border-bottom: none;
 }
 
-/* Article links -- source uses a softer dark tone for readability */
-.tabs-sidebar .tabs-sidebar-panel a:any-link {
-  color: #3c4043;
-  font-size: var(--body-font-size-s);
+.tabs-sidebar .tabs-sidebar-panel li:last-child {
+  margin-bottom: 0;
+}
+
+.tabs-sidebar .tabs-sidebar-panel a {
+  color: #1e222a;
+  font-size: 14px;
   font-weight: 400;
-  font-family: var(--body-font-family);
-  text-decoration: none;
   line-height: 1.5;
+  text-decoration: none;
 }
 
 .tabs-sidebar .tabs-sidebar-panel a:hover {
-  color: var(--brand-green);
-  text-decoration: none;
+  color: #2a7de1;
 }
 
-/* Reset button-container wrapper that EDS might apply */
-.tabs-sidebar .tabs-sidebar-panel p.button-wrapper {
-  margin: 0;
+/* tab icons */
+.tabs-sidebar .tabs-sidebar-list .tab-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
 }
 
-.tabs-sidebar .tabs-sidebar-panel a.button:any-link {
-  display: inline;
-  padding: 0;
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-  color: #3c4043;
-  font-size: var(--body-font-size-s);
-  font-weight: 400;
-  white-space: normal;
-  text-overflow: unset;
-  overflow: visible;
+.tabs-sidebar .tabs-sidebar-list .tab-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: #c7cdd7;
+  fill: none;
 }
 
-.tabs-sidebar .tabs-sidebar-panel a.button:hover {
-  color: var(--brand-green);
-  background-color: transparent;
-  border: none;
-}
-
-/* Ensure the green active border sits on top of the tab bar border */
-.tabs-sidebar .tabs-sidebar-list button[aria-selected='true']::after {
-  content: none;
+.tabs-sidebar .tabs-sidebar-list button[aria-selected='true'] .tab-icon svg {
+  stroke: #00b451;
 }

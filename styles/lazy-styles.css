@@ -1,1 +1,768 @@
 /* add global styles that can be loaded post LCP here */
+
+/* stylelint-disable no-descending-specificity */
+
+/* ===== Blog Two-Column Layout ===== */
+
+main > .section.sidebar {
+  margin: 40px 0;
+  padding: 0;
+}
+
+main > .section.sidebar > div {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (width >= 900px) {
+  main > .section.sidebar > div {
+    padding: 0 32px;
+  }
+
+  main > .section.sidebar.blog-layout {
+    display: grid;
+    grid-template-columns: 1fr 330px;
+    gap: 0 48px;
+    max-width: 1128px;
+    margin: 40px auto;
+    padding: 0 32px;
+  }
+
+  .blog-main-col {
+    min-width: 0;
+  }
+
+  .blog-side-col {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+  }
+}
+
+/* ===== Blog Category Headings (H2) - only on blog homepage ===== */
+main > .section.sidebar h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  margin: 48px 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+main > .section h2 .category-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+main > .section h2 .category-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+main > .section.sidebar h2 a {
+  color: #1e222a;
+  text-decoration: none;
+}
+
+main > .section.sidebar h2 a:hover {
+  color: #2a7de1;
+}
+
+@media (width >= 900px) {
+  main > .section.sidebar h2 {
+    font-size: 40px;
+    margin: 56px 0 40px;
+  }
+
+  main > .section.sidebar h2 .category-icon svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ===== Blog Sub-Topic Headings (H3) ===== */
+main > .section .default-content-wrapper h3,
+.blog-main-col > h3,
+.subtopic-group h3 {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #1e222a;
+  margin: 32px 0 16px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+main > .section .default-content-wrapper h3::after,
+.blog-main-col > h3::after,
+.subtopic-group h3::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #c7cdd7;
+}
+
+main > .section .default-content-wrapper h3 a,
+.blog-main-col > h3 a,
+.subtopic-group h3 a {
+  color: #1e222a;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+main > .section .default-content-wrapper h3 a:hover,
+.blog-main-col > h3 a:hover,
+.subtopic-group h3 a:hover {
+  color: #2a7de1;
+}
+
+@media (width >= 900px) {
+  main > .section .default-content-wrapper h3,
+  .blog-main-col > h3,
+  .subtopic-group h3 {
+    font-size: 24px;
+  }
+}
+
+/* Sub-topic groups: 2-column pairs on desktop */
+.blog-main-col {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 24px;
+}
+
+.blog-main-col > * {
+  width: 100%;
+}
+
+@media (width >= 600px) {
+  .blog-main-col > .subtopic-group {
+    width: calc(50% - 12px);
+  }
+}
+
+.subtopic-group h3 {
+  margin-top: 24px;
+}
+
+/* "More about" links inside subtopic groups */
+.subtopic-group .more-about a {
+  color: #2a7de1;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.subtopic-group .more-about a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Featured Articles: vertical cards (image top, title below) ===== */
+
+/* Image paragraph - the <p> that wraps <a><picture> */
+main > .section .default-content-wrapper > p > a:has(picture) {
+  display: block;
+  line-height: 0;
+  overflow: hidden;
+  background-color: #f8f9fa;
+}
+
+main > .section .default-content-wrapper > p > a:has(picture) img {
+  width: 100%;
+  aspect-ratio: 1.46 / 1;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+main > .section .default-content-wrapper > p > a:has(picture):hover img {
+  transform: scale(1.05);
+}
+
+/* Title paragraph inside article card */
+main > .section .article-card > p:last-child {
+  padding: 16px 24px 24px;
+}
+
+main > .section .article-card > p:last-child a {
+  color: #212630;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.63;
+  text-decoration: none;
+}
+
+main > .section .article-card > p:last-child a:hover {
+  color: #2a7de1;
+}
+
+/* Featured articles: paired as cards in 2-column grid */
+
+/* JS wraps image+title <p> pairs into .article-card divs */
+@media (width >= 600px) {
+  main > .section.sidebar .default-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+  }
+
+  main > .section.sidebar .default-content-wrapper > h2,
+  main > .section.sidebar .default-content-wrapper > h3,
+  main > .section.sidebar .default-content-wrapper > p:has(> a[href*="/topic/"]) {
+    grid-column: 1 / -1;
+  }
+
+  main > .section.sidebar .default-content-wrapper > .article-card {
+    background-color: #f8f9fa;
+    margin-bottom: 24px;
+  }
+
+  main > .section.sidebar .default-content-wrapper > .article-card p {
+    margin: 0;
+  }
+}
+
+/* ===== "More about" Links ===== */
+main > .section .default-content-wrapper > p > a[href*="/topic/"]:not([href*="signal-"]) {
+  color: #2a7de1;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+main > .section .default-content-wrapper > p > a[href*="/topic/"]:not([href*="signal-"]):hover {
+  text-decoration: underline;
+}
+
+/* ===== "See all articles" Outline Button ===== */
+p > a[href*="signal-"][href*="/topic/"] {
+  display: inline-block;
+  border: 1px solid #c7cdd7;
+  border-radius: 5px;
+  padding: 10px 24px;
+  color: #4d5566;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 24px 0;
+  transition: border-color 0.2s;
+}
+
+p > a[href*="signal-"][href*="/topic/"]:hover {
+  border-color: #1e222a;
+  color: #1e222a;
+}
+
+@media (width >= 900px) {
+  p > a[href*="signal-"][href*="/topic/"] {
+    font-size: 18px;
+  }
+}
+
+/* ===== Sidebar Column Styling ===== */
+
+.blog-side-col {
+  background-color: #f8f9fa;
+  padding: 0 16px;
+}
+
+main > .section.sidebar .blog-side-col .default-content-wrapper {
+  display: block;
+}
+
+/* "See all" link that leaked into sidebar — hide it */
+.blog-side-col > .default-content-wrapper > p:first-child:has(a[href*="signal-"]) {
+  display: none;
+}
+
+/* Tags heading */
+.blog-side-col h4#tags {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e222a;
+  margin: 0 0 12px;
+  padding-top: 16px;
+  border-top: 1px solid #c7cdd7;
+  line-height: 1.3;
+}
+
+/* Tag pills container */
+.blog-side-col h4#tags + p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+/* Individual tag pill */
+.blog-side-col h4#tags + p a {
+  display: inline-block;
+  background-color: rgb(199 205 215 / 64%);
+  border: 1px solid #bbc1cc;
+  border-radius: 40px;
+  padding: 6px 16px;
+  color: #1e222a;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.75px;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.blog-side-col h4#tags + p a:hover {
+  background-color: rgb(199 205 215 / 90%);
+  border-color: #1e222a;
+}
+
+/* "New on AVG Signal Blog" heading */
+.blog-side-col h4#new-on-avg-signal-blog {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e222a;
+  margin: 0 0 20px;
+  padding-top: 16px;
+  border-top: 1px solid #c7cdd7;
+  clear: both;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* stylelint-disable no-descending-specificity */
+
+/* ===== Blog Article Page Styles ===== */
+
+/* Article 3-column layout: social | content | TOC+CTA sidebar */
+.hero-article-container.article-layout > .default-content-wrapper {
+  max-width: 1128px;
+}
+
+.article-social-col {
+  display: none;
+}
+
+.article-main-col {
+  max-width: 720px;
+}
+
+/* Sidebar CTA widget */
+.article-sidebar-cta {
+  background-color: #fff;
+  padding: 32px 24px;
+  text-align: center;
+  margin-bottom: 32px;
+  box-shadow: 0 20px 50px 0 rgb(0 0 0 / 10%);
+}
+
+.article-sidebar-cta h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #212630;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.article-sidebar-cta p {
+  font-size: 14px;
+  color: #4d5566;
+  line-height: 1.55;
+  margin: 0 0 16px;
+}
+
+.article-sidebar-cta p a {
+  color: #1e222a;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.article-sidebar-cta a.sidebar-cta-btn,
+.article-sidebar-cta a.sidebar-cta-btn:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #008941;
+  color: #fff;
+  border-radius: 6px;
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 4px 0;
+}
+
+.article-sidebar-cta a.sidebar-cta-btn:hover {
+  background-color: #006d34;
+  color: #fff;
+}
+
+.article-sidebar-cta .sidebar-cta-btn .cta-icon {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+}
+
+.article-sidebar-cta .sidebar-cta-btn .cta-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.article-sidebar-cta p:last-child {
+  font-size: 14px;
+  color: #4d5566;
+  margin: 12px 0 0;
+}
+
+.article-sidebar-cta p:last-child a {
+  color: #2a7de1;
+  text-decoration: none;
+}
+
+.article-sidebar-cta p:last-child a:hover {
+  text-decoration: underline;
+}
+
+.article-toc {
+  margin-top: 32px;
+  padding: 0;
+  border-top: 1px solid #e8eaed;
+}
+
+.article-toc > p {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e222a;
+  margin: 0;
+  padding: 20px 0 16px;
+}
+
+.article-toc ul {
+  list-style: none;
+  padding: 0 0 0 16px;
+  margin: 0;
+  border-left: 2px solid #e8eaed;
+}
+
+.article-toc ul li {
+  position: relative;
+  padding-left: 12px;
+  margin-bottom: 4px;
+}
+
+.article-toc ul li::before {
+  content: "";
+  position: absolute;
+  left: -17px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.article-toc ul li.active::before {
+  background-color: #00b451;
+}
+
+.article-toc ul li a {
+  color: #1e222a;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 4px 0;
+  display: block;
+  line-height: 1.5;
+}
+
+.article-toc ul li.active a {
+  font-weight: 700;
+}
+
+.article-toc ul li a:hover {
+  color: #2a7de1;
+}
+
+@media (width >= 900px) {
+  .hero-article-container.article-layout > .default-content-wrapper {
+    display: grid;
+    grid-template-columns: 48px 1fr 280px;
+    gap: 0 32px;
+  }
+
+  .article-social-col {
+    display: block;
+    position: sticky;
+    top: 20px;
+    align-self: start;
+  }
+
+  .article-sidebar-col {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+  }
+
+  .article-toc {
+    margin-top: 0;
+  }
+}
+
+/* Article content max-width */
+.hero-article-container ~ .section > div {
+  max-width: 720px;
+}
+
+/* Article H2s - left aligned, not centered */
+.hero-article-container ~ .section h2 {
+  text-align: left;
+  font-size: 28px;
+  margin: 40px 0 16px;
+}
+
+.hero-article-container ~ .section.carousel-blog-container .carousel-card h2 {
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+
+@media (width >= 900px) {
+  .hero-article-container ~ .section h2 {
+    font-size: 32px;
+  }
+
+  .hero-article-container ~ .section.carousel-blog-container .carousel-card h2 {
+    font-size: 20px;
+  }
+}
+
+/* Article H3s - no line separator, reset flex to block */
+.hero-article-container ~ .section h3,
+.hero-article-container .article-main-col h3 {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 32px 0 12px;
+}
+
+.hero-article-container ~ .section h3::after,
+.hero-article-container .article-main-col h3::after {
+  display: none;
+  content: none;
+}
+
+/* Reviews section (after article) — aligned under article content column */
+.hero-article-container ~ .section.embed-reviews-container {
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+@media (width >= 900px) {
+  .hero-article-container ~ .section.embed-reviews-container {
+    padding: 0 32px 40px;
+  }
+
+  .hero-article-container ~ .section.embed-reviews-container > .default-content-wrapper:first-child,
+  .hero-article-container ~ .section.embed-reviews-container > .embed-reviews-wrapper {
+    margin-left: calc(48px + 32px);
+    max-width: 720px;
+    padding: 0;
+  }
+}
+
+.hero-article-container ~ .section.embed-reviews-container h2 {
+  font-size: 32px;
+  color: #036;
+  text-align: left;
+  margin: 0 0 24px;
+  display: block;
+  justify-content: normal;
+}
+
+@media (width >= 900px) {
+  .hero-article-container ~ .section.embed-reviews-container h2 {
+    font-size: 40px;
+  }
+}
+
+.hero-article-container ~ .section.embed-reviews-container .fragment-wrapper,
+.hero-article-container ~ .section.embed-reviews-container > .default-content-wrapper:last-child {
+  display: none;
+}
+
+.hero-article-container ~ .section.embed-reviews-container > .default-content-wrapper:first-child,
+.hero-article-container ~ .section.embed-reviews-container .embed-reviews-wrapper {
+  display: block;
+}
+
+/* Article metadata area */
+.article-meta {
+  padding: 24px 0 16px;
+  margin-bottom: 8px;
+  border-top: 1px solid #e8eaed;
+}
+
+.article-social {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.article-social a.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #1e222a;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.article-social a.social-icon:hover {
+  color: #2a7de1;
+}
+
+a.social-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.article-author .author-byline {
+  font-size: 16px;
+  color: #4b5563;
+  font-weight: 400;
+  line-height: 1.75;
+  margin: 0 0 2px;
+}
+
+.article-author .author-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #2276d9;
+  cursor: pointer;
+}
+
+.article-author .author-name:hover {
+  text-decoration: underline;
+}
+
+.article-author .author-date {
+  font-size: 16px;
+  color: #4b5563;
+  font-weight: 400;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Article footer: CTA, separator, tags, social */
+.article-footer-cta {
+  margin: 32px 0 16px;
+}
+
+.article-footer-cta a.button.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: #008941;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 21px 32px;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow:
+    0 15px 35px -15px rgb(12 5 62 / 15%),
+    0 10px 30px -10px rgb(0 137 65 / 60%);
+}
+
+.article-footer-cta a.button.primary:hover {
+  border: none;
+  background-color: #006d34;
+}
+
+.article-footer-cta .cta-icon {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+}
+
+.article-footer-getit {
+  font-size: 13px;
+  color: #4d5566;
+  margin: 8px 0 0;
+}
+
+hr.article-footer-sep {
+  border: none;
+  border-top: 1px solid #e8eaed;
+  margin: 40px 0 24px;
+}
+
+.article-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.article-footer-tags {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+}
+
+.article-footer-tags a.tag-pill {
+  display: inline-block;
+  background-color: rgb(199 205 215 / 64%);
+  border: 1px solid #bbc1cc;
+  border-radius: 40px;
+  padding: 6px 16px;
+  color: #1e222a;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.75px;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.article-footer-tags a.tag-pill:hover {
+  background-color: rgb(199 205 215 / 90%);
+  border-color: #1e222a;
+}
+
+.article-footer-social {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.article-footer-social a.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #1e222a;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.article-footer-social a.social-icon:hover {
+  color: #2a7de1;
+}
+/* stylelint-enable no-descending-specificity */

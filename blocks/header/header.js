@@ -124,13 +124,12 @@ export default async function decorate(block) {
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  // remove leaked head elements from fragment
-  nav.querySelectorAll(':scope > meta, :scope > link, :scope > script, :scope > noscript').forEach((el) => el.remove());
+  nav.querySelectorAll(':scope > meta, :scope > link, :scope > script, :scope > style').forEach((el) => el.remove());
 
   const classes = ['brand', 'sections', 'tools'];
-  const navSectionDivs = [...nav.children].filter((child) => child.tagName === 'DIV' && child.classList.contains('section'));
+  const sections = [...nav.children].filter((c) => c.tagName === 'DIV');
   classes.forEach((c, i) => {
-    const section = navSectionDivs[i];
+    const section = sections[i];
     if (section) section.classList.add(`nav-${c}`);
   });
 

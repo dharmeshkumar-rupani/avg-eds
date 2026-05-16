@@ -1,196 +1,156 @@
-/*
- * Hero Article Block
- * Article detail hero with white background, description, and CTA button.
- * Source: https://www.avg.com/en/signal/what-is-malicious-code
- *
- * Decorated DOM (after EDS + decorate):
- *   .hero-article.block
- *     div (row 1) -> image cell (picture)
- *     div (row 2) -> text cell (h1, p desc, p > a CTA)
- *
- * On desktop, the source has a 2-column layout:
- *   left col (~42%) = text (category, h1, desc, CTA, awards)
- *   right col (~58%) = hero image
- */
+/* stylelint-disable no-descending-specificity */
 
-/* --- Wrapper: full-width block --- */
-.hero-article-wrapper {
-  max-width: unset !important;
-  padding: 0 !important;
+/* hero-article: 2-column layout - text left, image right */
+main > .section.hero-article-container {
+  padding: 0;
+  margin: 0 0 32px;
 }
 
-/* --- Block root --- */
-.hero-article {
-  background-color: var(--background-color); /* rgb(255, 255, 255) */
-  color: var(--text-color); /* rgb(30, 34, 42) */
-  padding: 0 24px;
-  max-width: 1360px;
+main > .section.hero-article-container > .hero-article-wrapper {
+  max-width: 1128px;
   margin: 0 auto;
+  padding: 24px 24px 0;
 }
 
-/* --- Mobile: stack vertically --- */
-
-/* Rows */
-.hero-article > div {
+.hero-article {
   display: flex;
-  flex-flow: column;
+  flex-direction: column-reverse;
+  gap: 24px;
 }
 
-/* Cells */
-.hero-article > div > div {
-  width: 100%;
+/* Category tag (MALWARE →) */
+.hero-article .hero-article-text p:first-child a {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4d5566;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin-bottom: 12px;
 }
 
-/* Image row (row 1) */
-.hero-article > div:first-child {
-  order: 1;
+.hero-article .hero-article-text p:first-child a:hover {
+  color: #2a7de1;
 }
 
-/* Text row (row 2) */
-.hero-article > div:last-child {
-  order: 2;
-  padding: 42px 0 0;
-}
-
-/* --- H1 --- */
-.hero-article h1 {
-  font-size: 32px;
+.hero-article .hero-article-text h1 {
+  font-size: 30px;
   font-weight: 700;
-  font-family: var(--heading-font-family); /* Roboto */
-  line-height: 1.25;
-  color: var(--text-color); /* rgb(30, 34, 42) */
+  line-height: 1.15;
+  color: #1e222a;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.hero-article .hero-article-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1e222a;
   margin: 0 0 16px;
 }
 
-/* --- Description paragraph --- */
-.hero-article p {
-  font-size: 18px;
-  font-family: var(--body-font-family); /* Roboto */
-  line-height: 1.5;
-  color: rgb(77 85 102);
-  margin: 0 0 20px;
-}
-
-/* --- Links --- */
-.hero-article a:any-link {
-  color: var(--text-color); /* rgb(30, 34, 42) */
-  text-decoration: none;
-}
-
-/* --- CTA Button --- */
-main .hero-article a.button:any-link {
-  background-color: var(--brand-green); /* rgb(0, 137, 65) */
+/* Green CTA button */
+.hero-article .hero-article-text a.button.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background-color: #008941;
   color: #fff;
-  padding: 16px 32px;
-  border: 0 none;
+  border: none;
   border-radius: 6px;
-  font-size: 18px;
+  padding: 21px 32px;
+  font-size: 20px;
   font-weight: 600;
-  line-height: 30px;
-  display: inline-block;
-  text-align: center;
-  white-space: normal;
-  max-width: 100%;
+  text-decoration: none;
+  box-shadow:
+    0 15px 35px -15px rgb(12 5 62 / 15%),
+    0 10px 30px -10px rgb(0 137 65 / 60%);
 }
 
-main .hero-article a.button:hover,
-main .hero-article a.button:focus-visible {
-  background-color: #006b32;
+.hero-article .hero-article-text a.button.primary:hover {
+  background-color: #006d34;
+  border: none;
   color: #fff;
+  box-shadow:
+    0 15px 35px -15px rgb(12 5 62 / 20%),
+    0 10px 30px -10px rgb(0 109 52 / 70%);
 }
 
-/* --- Button wrapper paragraph --- */
-.hero-article p.button-container {
-  margin: 20px 0 0;
+.hero-article .hero-article-text a.button.primary .cta-icon {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
-/* --- Images --- */
-.hero-article picture {
-  display: block;
+.hero-article .hero-article-text a.button.primary .cta-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* "Get it for" platform links */
+.hero-article .hero-article-text p:has(> a[href*="avg.sng"]) {
+  font-size: 13px;
+  color: #4d5566;
+}
+
+/* Award badges */
+.hero-article .hero-article-text p:has(picture:first-child) {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e8eaed;
+}
+
+.hero-article .hero-article-text p picture img {
+  height: 48px;
+  width: auto;
+}
+
+.hero-article .hero-article-image {
   line-height: 0;
 }
 
-.hero-article img {
-  width: 100%;
-  height: auto;
+.hero-article .hero-article-image picture {
   display: block;
 }
 
-/* --- No-image variant (no picture in row 1) --- */
-.hero-article.no-image > div:first-child {
-  display: none;
+.hero-article .hero-article-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-.hero-article.no-image {
-  padding-top: 42px;
-  padding-bottom: 30px;
-}
-
-.hero-article.no-image > div:last-child {
-  padding-top: 0;
-}
-
-/* === Desktop === */
 @media (width >= 900px) {
+  main > .section.hero-article-container > .hero-article-wrapper {
+    padding: 40px 32px 0;
+  }
+
   .hero-article {
-    padding: 42px 25px 0;
-  }
-
-  /* Row becomes side-by-side flex layout */
-  .hero-article > div {
-    flex-flow: row nowrap;
+    flex-direction: row;
     align-items: center;
+    gap: 48px;
   }
 
-  /* Image row: reset order for desktop */
-  .hero-article > div:first-child {
-    order: unset;
-  }
-
-  .hero-article > div:last-child {
-    order: unset;
-  }
-
-  /* Text cell */
-  .hero-article > div:last-child > div {
+  .hero-article .hero-article-text {
     flex: 0 0 42%;
-    max-width: 42%;
-    padding: 0 15px 46px 0;
+    order: -1;
   }
 
-  /* H1 at desktop size */
-  .hero-article h1 {
-    font-size: 48px;
-    line-height: 60px;
+  .hero-article .hero-article-image {
+    flex: 1;
   }
 
-  /* Description at desktop size */
-  .hero-article p {
-    font-size: 20px;
-    line-height: 30px;
-    margin: 0 0 30px;
+  .hero-article .hero-article-text h1 {
+    font-size: 40px;
   }
 
-  /* CTA Button at desktop size */
-  main .hero-article a.button:any-link {
-    padding: 21px 32px;
-    font-size: 20px;
-  }
-
-  /* Image cell */
-  .hero-article > div:first-child > div {
-    flex: 0 0 58%;
-    max-width: 58%;
-  }
-
-  /* No-image variant desktop */
-  .hero-article.no-image {
-    padding: 42px 25px 30px;
-  }
-
-  .hero-article.no-image > div:last-child > div {
-    flex: 0 0 60%;
-    max-width: 60%;
-    padding-bottom: 0;
+  .hero-article .hero-article-text p {
+    font-size: 17px;
   }
 }

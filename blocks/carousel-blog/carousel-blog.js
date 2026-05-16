@@ -1,154 +1,122 @@
-function updateActiveSlide(slide) {
-  const block = slide.closest('.carousel-blog');
-  const slideIndex = parseInt(slide.dataset.slideIndex, 10);
-  block.dataset.activeSlide = slideIndex;
+function getVisibleCount(viewport, cards) {
+  if (!cards.length) return 1;
+  return Math.round(viewport.offsetWidth / cards[0].offsetWidth) || 1;
+}
 
-  const slides = block.querySelectorAll('.carousel-blog-slide');
+function getPageCount(cards, visibleCount) {
+  return Math.max(1, Math.ceil((cards.length - visibleCount) / visibleCount) + 1);
+}
 
-  slides.forEach((aSlide, idx) => {
-    aSlide.setAttribute('aria-hidden', idx !== slideIndex);
-    aSlide.querySelectorAll('a').forEach((link) => {
-      if (idx !== slideIndex) {
-        link.setAttribute('tabindex', '-1');
-      } else {
-        link.removeAttribute('tabindex');
-      }
-    });
+function updateSlides(block, pageIndex) {
+  const track = block.querySelector('.carousel-track');
+  const viewport = block.querySelector('.carousel-viewport');
+  if (!track || !viewport) return;
+
+  const cards = [...track.querySelectorAll('.carousel-card')];
+  if (!cards.length) return;
+
+  const visibleCount = getVisibleCount(viewport, cards);
+  const cardWidth = cards[0].offsetWidth;
+  const maxIndex = Math.max(0, cards.length - visibleCount);
+  const slideIndex = Math.min(pageIndex * visibleCount, maxIndex);
+
+  track.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
+
+  const prevBtn = block.querySelector('.carousel-prev');
+  const nextBtn = block.querySelector('.carousel-next');
+  if (prevBtn) prevBtn.disabled = pageIndex <= 0;
+  if (nextBtn) nextBtn.disabled = slideIndex >= maxIndex;
+
+  const dots = block.querySelectorAll('.carousel-dots button');
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === pageIndex));
+}
+
+export default function decorate(block) {
+  const rows = [...block.children];
+  block.textContent = '';
+
+  const nav = document.createElement('div');
+  nav.className = 'carousel-nav';
+  const prevBtn = document.createElement('button');
+  prevBtn.className = 'carousel-prev';
+  prevBtn.setAttribute('aria-label', 'Previous');
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'carousel-next';
+  nextBtn.setAttribute('aria-label', 'Next');
+  nav.append(prevBtn, nextBtn);
+
+  const viewport = document.createElement('div');
+  viewport.className = 'carousel-viewport';
+  const track = document.createElement('div');
+  track.className = 'carousel-track';
+
+  rows.forEach((row) => {
+    const card = document.createElement('div');
+    card.className = 'carousel-card';
+    const imgCell = row.children[0];
+    const textCell = row.children[1];
+    if (imgCell) card.append(imgCell);
+    if (textCell) card.append(textCell);
+    track.append(card);
   });
 
-  const indicators = block.querySelectorAll('.carousel-blog-slide-indicator');
-  indicators.forEach((indicator, idx) => {
-    if (idx !== slideIndex) {
-      indicator.querySelector('button').removeAttribute('disabled');
-    } else {
-      indicator.querySelector('button').setAttribute('disabled', 'true');
+  viewport.append(track);
+
+  const dotsContainer = document.createElement('div');
+  dotsContainer.className = 'carousel-dots';
+
+  block.append(nav, viewport, dotsContainer);
+
+  let activePage = 0;
+
+  function buildDots() {
+    const cards = [...track.querySelectorAll('.carousel-card')];
+    const visibleCount = getVisibleCount(viewport, cards);
+    const pageCount = getPageCount(cards, visibleCount);
+
+    dotsContainer.textContent = '';
+    Array.from({ length: pageCount }, (_, i) => {
+      const dot = document.createElement('button');
+      dot.setAttribute('aria-label', `Page ${i + 1}`);
+      if (i === activePage) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        activePage = i;
+        updateSlides(block, activePage);
+      });
+      dotsContainer.append(dot);
+      return dot;
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (activePage > 0) {
+      activePage -= 1;
+      updateSlides(block, activePage);
     }
   });
-}
 
-export function showSlide(block, slideIndex = 0) {
-  const slides = block.querySelectorAll('.carousel-blog-slide');
-  if (!slides.length) return;
-  let realSlideIndex = Number.isNaN(slideIndex) ? 0 : slideIndex;
-  if (realSlideIndex < 0) realSlideIndex = slides.length - 1;
-  if (realSlideIndex >= slides.length) realSlideIndex = 0;
-  const activeSlide = slides[realSlideIndex];
-  if (!activeSlide) return;
-
-  activeSlide.querySelectorAll('a').forEach((link) => link.removeAttribute('tabindex'));
-  const slidesList = block.querySelector('.carousel-blog-slides');
-  const scrollPadding = parseInt(getComputedStyle(slidesList).scrollPaddingInlineStart, 10) || 0;
-  slidesList.scrollTo({
-    top: 0,
-    left: activeSlide.offsetLeft - scrollPadding,
-    behavior: 'smooth',
-  });
-}
-
-function bindEvents(block) {
-  const slideIndicators = block.querySelector('.carousel-blog-slide-indicators');
-  if (!slideIndicators) return;
-
-  slideIndicators.querySelectorAll('button').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      const slideIndicator = e.currentTarget.parentElement;
-      showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
-    });
-  });
-
-  block.querySelector('.slide-prev').addEventListener('click', () => {
-    const current = parseInt(block.dataset.activeSlide, 10) || 0;
-    showSlide(block, current - 1);
-  });
-  block.querySelector('.slide-next').addEventListener('click', () => {
-    const current = parseInt(block.dataset.activeSlide, 10) || 0;
-    showSlide(block, current + 1);
-  });
-
-  const slideObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) updateActiveSlide(entry.target);
-    });
-  }, { threshold: 0.5 });
-  block.querySelectorAll('.carousel-blog-slide').forEach((slide) => {
-    slideObserver.observe(slide);
-  });
-}
-
-function createSlide(row, slideIndex, carouselId) {
-  const slide = document.createElement('li');
-  slide.dataset.slideIndex = slideIndex;
-  slide.setAttribute('id', `carousel-blog-${carouselId}-slide-${slideIndex}`);
-  slide.classList.add('carousel-blog-slide');
-
-  row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-    column.classList.add(`carousel-blog-slide-${colIdx === 0 ? 'image' : 'content'}`);
-    slide.append(column);
-  });
-
-  const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
-  if (labeledBy) {
-    slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
-  }
-
-  return slide;
-}
-
-let carouselId = 0;
-export default async function decorate(block) {
-  carouselId += 1;
-  block.setAttribute('id', `carousel-blog-${carouselId}`);
-  const rows = block.querySelectorAll(':scope > div');
-  const isSingleSlide = rows.length < 2;
-
-  block.setAttribute('role', 'region');
-  block.setAttribute('aria-roledescription', 'Carousel');
-  block.dataset.activeSlide = 0;
-
-  const container = document.createElement('div');
-  container.classList.add('carousel-blog-slides-container');
-
-  const slidesWrapper = document.createElement('ul');
-  slidesWrapper.classList.add('carousel-blog-slides');
-  block.prepend(slidesWrapper);
-
-  let slideIndicators;
-  if (!isSingleSlide) {
-    const slideIndicatorsNav = document.createElement('nav');
-    slideIndicatorsNav.setAttribute('aria-label', 'Carousel Slide Controls');
-    slideIndicators = document.createElement('ol');
-    slideIndicators.classList.add('carousel-blog-slide-indicators');
-    slideIndicatorsNav.append(slideIndicators);
-    block.append(slideIndicatorsNav);
-
-    const slideNavButtons = document.createElement('div');
-    slideNavButtons.classList.add('carousel-blog-navigation-buttons');
-    slideNavButtons.innerHTML = `
-      <button type="button" class="slide-prev" aria-label="Previous Slide"></button>
-      <button type="button" class="slide-next" aria-label="Next Slide"></button>
-    `;
-
-    container.append(slideNavButtons);
-  }
-
-  rows.forEach((row, idx) => {
-    const slide = createSlide(row, idx, carouselId);
-    slidesWrapper.append(slide);
-
-    if (slideIndicators) {
-      const indicator = document.createElement('li');
-      indicator.classList.add('carousel-blog-slide-indicator');
-      indicator.dataset.targetSlide = idx;
-      indicator.innerHTML = `<button type="button" aria-label="Show Slide ${idx + 1} of ${rows.length}"></button>`;
-      slideIndicators.append(indicator);
+  nextBtn.addEventListener('click', () => {
+    const cards = [...track.querySelectorAll('.carousel-card')];
+    const visibleCount = getVisibleCount(viewport, cards);
+    const pageCount = getPageCount(cards, visibleCount);
+    if (activePage < pageCount - 1) {
+      activePage += 1;
+      updateSlides(block, activePage);
     }
-    row.remove();
   });
 
-  container.append(slidesWrapper);
-  block.prepend(container);
+  requestAnimationFrame(() => {
+    buildDots();
+    updateSlides(block, 0);
+  });
 
-  if (!isSingleSlide) {
-    bindEvents(block);
-  }
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      activePage = 0;
+      buildDots();
+      updateSlides(block, 0);
+    }, 200);
+  });
 }
