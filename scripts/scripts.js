@@ -87,6 +87,11 @@ function addSubtopicHeadings(main) {
       el = el.nextElementSibling;
     }
 
+    // SUBTOPICS lists only the subtopics whose cards-blog blocks live in the
+    // CMS (the first subtopic in each category — Malware/Browser/Cleaning —
+    // is authored as default content cards in the .default-content-wrapper).
+    // Every cards-blog wrapped here is a non-featured subtopic: paired
+    // side-by-side at 2-col with small horizontal cards inside.
     cardBlocks.forEach((block, i) => {
       if (i < topics.length) {
         const [name, href] = topics[i];

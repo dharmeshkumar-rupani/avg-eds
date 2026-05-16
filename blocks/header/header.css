@@ -283,3 +283,191 @@ header nav .nav-sections ul > li {
     color: #fff;
   }
 }
+
+/* ===========================================================================
+ * Blog template nav (signal-nav): multi-level, plain text links, single row
+ * Scoped to body.blog so the main site nav (/nav) is untouched.
+ * =========================================================================== */
+
+/* Brand: AVG logo + "›" separator + "Signal" label, all inline */
+body.blog header nav .nav-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* Collapse the default-content-wrapper so the <p>s become flex children of .nav-brand */
+body.blog header nav .nav-brand > div {
+  display: contents;
+}
+
+body.blog header nav .nav-brand p {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+body.blog header nav .nav-brand p a:any-link {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+body.blog header nav .nav-brand p + p {
+  margin-left: 12px;
+}
+
+body.blog header nav .nav-brand p + p::before {
+  content: '›';
+  font-size: 22px;
+  color: rgb(120 128 144);
+  margin-right: 12px;
+  line-height: 1;
+}
+
+body.blog header nav .nav-brand p + p a:any-link {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+body.blog header nav .nav-brand img {
+  width: 64px;
+  height: auto;
+  display: block;
+}
+
+/* Desktop: plain-text sections + inline caret + single-row layout */
+@media (width >= 900px) {
+  /* Sections sit right after the brand (left side), tools pushed to far right */
+  body.blog header nav {
+    justify-content: flex-start;
+  }
+
+  body.blog header nav .nav-sections {
+    flex: 0 0 auto;
+    margin-left: 32px;
+  }
+
+  body.blog header nav .nav-sections ul {
+    justify-content: flex-start;
+  }
+
+  body.blog header nav .nav-tools {
+    order: 0;
+    width: auto;
+    padding: 16px 0;
+    margin-left: auto;
+  }
+
+  body.blog header nav .nav-brand {
+    margin-right: 0;
+  }
+
+  /* Plain-text top-level links (no pill) */
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li > a,
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li > p > a {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text-color);
+    font-weight: 500;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li > a:hover,
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li > p > a:hover {
+    background: transparent;
+    color: var(--brand-green);
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li > p {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Inline caret rendered on the <a> so it sits next to the label, not below */
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a {
+    cursor: pointer;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p > a::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 8px;
+    border-right: 1.5px solid currentcolor;
+    border-bottom: 1.5px solid currentcolor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop[aria-expanded='true'] > p > a::after {
+    transform: translateY(1px) rotate(-135deg);
+  }
+
+  /* Multi-level dropdown panel */
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    margin: 0;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid rgb(200 205 215);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgb(30 34 42 / 8%);
+    z-index: 10;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop:hover > ul,
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop[aria-expanded='true'] > ul {
+    display: block;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul > li {
+    display: block;
+    flex: none;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul > li > a {
+    display: block;
+    padding: 8px 20px;
+    border-radius: 0;
+    white-space: nowrap;
+    color: var(--text-color);
+    font-weight: 400;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul > li > a:hover {
+    background-color: var(--light-color);
+    color: var(--brand-green);
+  }
+}
+
+/* Mobile: stack nested dropdown items below their parent */
+@media (width < 900px) {
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > p {
+    margin: 0;
+    padding: 12px 0;
+    font-weight: 700;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul {
+    list-style: none;
+    padding: 0 0 8px 16px;
+    margin: 0;
+  }
+
+  body.blog header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul > li {
+    padding: 6px 0;
+  }
+}

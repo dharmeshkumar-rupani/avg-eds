@@ -72,18 +72,18 @@ main > .section.tabs-category-container {
   height: 45px;
 }
 
-/* sub-category links - flexbox column wrap like source */
+/* sub-category links - CSS multi-column layout so items reliably flow into
+   two balanced sub-columns regardless of category length (Security has 11). */
 .tabs-category-links {
-  display: flex;
-  flex-flow: column wrap;
-  gap: 0;
-  max-height: 168px;
+  column-count: 2;
+  column-gap: 24px;
+  column-fill: balance;
 }
 
 /* stylelint-disable no-descending-specificity */
 .tabs-category-links p {
-  margin: 0 0 7px;
-  width: 50%;
+  margin: 0 0 8px;
+  break-inside: avoid;
 }
 /* stylelint-enable no-descending-specificity */
 

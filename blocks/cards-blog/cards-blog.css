@@ -1,8 +1,4 @@
-/* cards-blog: article listing cards (big + small variants) */
-/* Block: cards-blog
-   Blog article listing cards with thumbnail images and clickable title links.
-   Extracted from: https://www.avg.com/en/signal (.card-big in .cards-flex)
-*/
+/* cards-blog: article listing cards (default + small variants) */
 
 /* Grid layout - mobile first (single column) */
 .cards-blog > ul {
@@ -18,16 +14,6 @@
   .cards-blog > ul {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-.cards-blog > ul > li {
-  background-color: #f8f9fa;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-  gap: 25px;
 }
 
 /* Individual card */
@@ -46,21 +32,6 @@
 
 .cards-blog > ul > li img {
   width: 100%;
-  aspect-ratio: 1.46 / 1;
-  object-fit: cover;
-}
-
-.cards-blog .cards-blog-card-body {
-  padding: 16px 24px;
-}
-
-.cards-blog .cards-blog-card-body a {
-  color: #212630;
-  font-size: 20px;
-  font-weight: 600;
-/* Card image - full width, cover fit */
-.cards-blog > ul > li img {
-  width: 100%;
   aspect-ratio: 418 / 296;
   object-fit: cover;
   display: block;
@@ -69,7 +40,7 @@
 
 /* Text body area */
 .cards-blog .cards-blog-card-body {
-  padding: 12px 15px 14px;
+  padding: 16px 24px 24px;
 }
 
 /* Title link styling */
@@ -78,49 +49,12 @@
   font-size: 20px;
   font-weight: 600;
   font-family: var(--body-font-family);
-  line-height: 1.63;
+  line-height: 1.4;
   text-decoration: none;
 }
 
 .cards-blog .cards-blog-card-body a:hover {
   color: #2a7de1;
-}
-
-/* small variant: horizontal card layout (thumbnail left, title right) */
-.cards-blog.small > ul {
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-.cards-blog.small > ul > li {
-  flex-direction: row;
-  height: 126px;
-}
-
-.cards-blog.small .cards-blog-card-image {
-  flex: 0 0 177px;
-  width: 177px;
-}
-
-.cards-blog.small > ul > li img {
-  width: 177px;
-  height: 126px;
-  aspect-ratio: auto;
-}
-
-.cards-blog.small .cards-blog-card-body {
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-}
-
-.cards-blog.small .cards-blog-card-body a {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: #212630;
-  color: var(--text-color);
-  text-decoration: underline;
 }
 
 /* Reset EDS button decoration on card links */
@@ -139,7 +73,7 @@
   font-size: 20px;
   font-weight: 600;
   font-family: var(--body-font-family);
-  line-height: 1.63;
+  line-height: 1.4;
   text-decoration: none;
   white-space: normal;
   text-overflow: unset;
@@ -156,7 +90,71 @@
   text-decoration: underline;
 }
 
-/* Desktop: 2 columns */
+/* ===== Small variant (used inside non-featured .subtopic-group) =====
+   Single-column list of horizontal cards: thumbnail left, title right.
+   Cards grow when titles are long so text is never cut off. */
+.cards-blog.small > ul {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.cards-blog.small > ul > li {
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 126px;
+  height: auto;
+  background-color: rgb(248 249 250);
+}
+
+.cards-blog.small .cards-blog-card-image {
+  flex: 0 0 177px;
+  width: 177px;
+  overflow: hidden;
+}
+
+.cards-blog.small > ul > li img {
+  width: 100%;
+  height: 100%;
+  min-height: 126px;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+.cards-blog.small .cards-blog-card-body {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 12px 16px;
+}
+
+.cards-blog.small .cards-blog-card-body p {
+  margin: 0;
+  width: 100%;
+}
+
+.cards-blog.small .cards-blog-card-body a,
+.cards-blog.small .cards-blog-card-body a.button:any-link {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: rgb(33 38 48);
+  text-decoration: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.cards-blog.small .cards-blog-card-body a:hover,
+.cards-blog.small .cards-blog-card-body a.button:hover {
+  color: #2a7de1;
+  text-decoration: none;
+}
+
+/* Desktop: 2 columns for default variant */
 @media (width >= 900px) {
   .cards-blog > ul {
     grid-template-columns: repeat(2, 1fr);

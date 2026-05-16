@@ -4,29 +4,32 @@
 
 /* ===== Blog Two-Column Layout ===== */
 
+/* Section spans full viewport so background-color (#f0f2f5 from styles.css)
+   is visible edge-to-edge; inner content is constrained via padding. */
 main > .section.sidebar {
-  margin: 40px 0;
-  padding: 0;
+  margin: 0;
+  padding: 40px 24px;
 }
 
 main > .section.sidebar > div {
   max-width: 1128px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 @media (width >= 900px) {
-  main > .section.sidebar > div {
-    padding: 0 32px;
+  main > .section.sidebar {
+    padding: 40px max(32px, calc((100% - 1128px) / 2));
   }
 
   main > .section.sidebar.blog-layout {
     display: grid;
-    grid-template-columns: 1fr 330px;
+    grid-template-columns: minmax(0, 1fr) 330px;
     gap: 0 48px;
-    max-width: 1128px;
-    margin: 40px auto;
-    padding: 0 32px;
+  }
+
+  main > .section.sidebar.blog-layout > div {
+    max-width: none;
+    margin: 0;
   }
 
   .blog-main-col {
@@ -131,11 +134,14 @@ main > .section .default-content-wrapper h3 a:hover,
   }
 }
 
-/* Sub-topic groups: 2-column pairs on desktop */
+/* Sub-topic groups: paired side-by-side at desktop. The first subtopic in
+   each category (Malware/Browser/Cleaning) lives in the .default-content-wrapper
+   above the subtopic-groups and naturally spans full width. */
 .blog-main-col {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 24px;
+  gap: 24px;
+  align-items: flex-start;
 }
 
 .blog-main-col > * {
@@ -149,10 +155,14 @@ main > .section .default-content-wrapper h3 a:hover,
 }
 
 .subtopic-group h3 {
-  margin-top: 24px;
+  margin: 0 0 16px;
 }
 
 /* "More about" links inside subtopic groups */
+.subtopic-group .more-about {
+  margin: 16px 0 0;
+}
+
 .subtopic-group .more-about a {
   color: #2a7de1;
   font-size: 16px;
@@ -240,8 +250,8 @@ main > .section .default-content-wrapper > p > a[href*="/topic/"]:not([href*="si
   text-decoration: underline;
 }
 
-/* ===== "See all articles" Outline Button ===== */
-p > a[href*="signal-"][href*="/topic/"] {
+/* ===== "See all articles" Outline Button (blog content only, not header nav) ===== */
+main p > a[href*="signal-"][href*="/topic/"] {
   display: inline-block;
   border: 1px solid #c7cdd7;
   border-radius: 5px;
@@ -254,13 +264,13 @@ p > a[href*="signal-"][href*="/topic/"] {
   transition: border-color 0.2s;
 }
 
-p > a[href*="signal-"][href*="/topic/"]:hover {
+main p > a[href*="signal-"][href*="/topic/"]:hover {
   border-color: #1e222a;
   color: #1e222a;
 }
 
 @media (width >= 900px) {
-  p > a[href*="signal-"][href*="/topic/"] {
+  main p > a[href*="signal-"][href*="/topic/"] {
     font-size: 18px;
   }
 }

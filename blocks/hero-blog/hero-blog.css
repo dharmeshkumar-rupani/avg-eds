@@ -1,12 +1,15 @@
-/* hero-blog: full-width banner with background image */
+/* hero-blog: content-width banner with background image (matches source).
+   Constrained to 1128px and centered so the tabs-category card overlaps it
+   neatly within the same content column. */
 main > .section.hero-blog-container {
   padding: 0;
   margin: 0;
 }
 
 main > .section.hero-blog-container > .hero-blog-wrapper {
-  max-width: unset;
-  padding: 0;
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .hero-blog {
@@ -14,13 +17,13 @@ main > .section.hero-blog-container > .hero-blog-wrapper {
   min-height: 340px;
   display: flex;
   align-items: flex-start;
-  padding: 48px 24px 120px;
+  padding: 48px 32px 120px;
   overflow: hidden;
 }
 
 .hero-blog picture {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 0;
 }
 
@@ -31,9 +34,26 @@ main > .section.hero-blog-container > .hero-blog-wrapper {
   height: 100%;
 }
 
+/* Blue gradient blob on the left so the white headline + copy stay legible
+   against the photo, matching the source design. */
+.hero-blog::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(105deg,
+      #0d7cc2 0%,
+      #1f95d6 30%,
+      rgb(31 149 214 / 90%) 42%,
+      rgb(31 149 214 / 55%) 52%,
+      rgb(31 149 214 / 0%) 65%);
+  pointer-events: none;
+}
+
 .hero-blog > div {
-  max-width: 1128px;
-  margin: 0 auto;
+  position: relative;
+  z-index: 2;
   width: 100%;
 }
 
@@ -62,9 +82,13 @@ main > .section.hero-blog-container > .hero-blog-wrapper {
 }
 
 @media (width >= 900px) {
+  main > .section.hero-blog-container > .hero-blog-wrapper {
+    padding: 0 32px;
+  }
+
   .hero-blog {
     min-height: 460px;
-    padding: 76px 32px 140px;
+    padding: 76px 48px 140px;
   }
 
   .hero-blog h1 {
