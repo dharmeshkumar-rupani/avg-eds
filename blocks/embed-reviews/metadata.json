@@ -1,0 +1,39 @@
+{
+  "variantName": "embed-reviews",
+  "baseBlock": "embed",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en/signal/what-is-malicious-code",
+    "originPage": "AVG Signal blog article detail page about malicious code",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "standard",
+    "purpose": "customer-reviews",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + embedded Trustpilot review carousel widget (iframe)",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "Trustpilot review embed widgets",
+      "customer review/testimonial embed sections",
+      "third-party review carousel embeds"
+    ],
+    "notSuitableFor": [
+      "video embeds (YouTube, Vimeo)",
+      "social media post embeds",
+      "interactive map or form embeds"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/signal/what-is-malicious-code"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-13T21:46:00.000Z"
+  }
+}

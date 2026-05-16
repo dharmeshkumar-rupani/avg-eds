@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.avg.com/en/signal/what-is-malicious-code",
+  "path": "en/signal/what-is-malicious-code",
+  "timestamp": "2026-05-13T22:15:49.082Z",
+  "title": "What Is Malicious Code | Examples of Malicious Code",
+  "template": "blog-article",
+  "blocks": [
+    "hero-article",
+    "fragment",
+    "fragment",
+    "fragment",
+    "fragment",
+    "embed-reviews",
+    "carousel-blog"
+  ]
+}

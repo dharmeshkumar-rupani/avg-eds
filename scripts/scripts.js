@@ -517,6 +517,20 @@ function decorateButtons(main) {
 }
 
 /**
+ * Removes empty top-level sections that authors may leave behind as content artifacts
+ * (e.g. a stray trailing empty paragraph in a Google Doc becomes <div></div>).
+ * @param {Element} main The main container element
+ */
+function removeEmptySections(main) {
+  [...main.children].forEach((section) => {
+    if (section.tagName !== 'DIV') return;
+    if (section.children.length === 0 && section.textContent.trim() === '') {
+      section.remove();
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -524,6 +538,7 @@ function decorateButtons(main) {
 export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
+  removeEmptySections(main);
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);

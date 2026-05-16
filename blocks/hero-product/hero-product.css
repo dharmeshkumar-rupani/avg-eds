@@ -1,0 +1,212 @@
+/* hero-product block -- migrated from AVG homepage #top hero */
+
+/* Extracted values from source: https://www.avg.com/en-ww/homepage */
+
+/* Section and wrapper overrides for full-width hero */
+.hero-product-container {
+  padding-bottom: 0 !important;
+}
+
+.hero-product-wrapper {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Block container */
+.hero-product {
+  position: relative;
+  background-color: #fff;
+  background-image: url("https://static2.avg.com/10004806/web/i/banner_backgrounds/hero-desktop-gloweb-7026.jpg");
+  background-size: contain;
+  background-position: 100% 0%;
+  background-repeat: no-repeat;
+  color: rgb(28 34 46);
+  padding: 40px 20px 48px;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+/* Row (single row containing the single cell) */
+.hero-product > div {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Cell (text content container) */
+.hero-product > div > div {
+  max-width: 100%;
+  padding: 0;
+}
+
+/* H1 heading */
+.hero-product h1 {
+  font-size: 32px;
+  font-weight: 900;
+  font-family: var(--heading-font-family);
+  line-height: 1.2;
+  color: var(--text-color);
+  margin: 0 0 16px;
+  letter-spacing: normal;
+  max-width: 520px;
+}
+
+/* Description paragraph */
+.hero-product p {
+  font-size: 16px;
+  font-family: var(--body-font-family);
+  line-height: 1.4;
+  color: rgb(28 34 46);
+  margin: 0 0 8px;
+  max-width: 520px;
+}
+
+/* CTA button */
+main .hero-product a.button:any-link {
+  background-color: var(--brand-green);
+  color: #fff;
+  padding: 14px 40px;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 0 none transparent;
+  box-shadow: 0 6px 16px rgb(0 137 65 / 35%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 200px;
+  margin: 8px 0 16px;
+}
+
+main .hero-product a.button:any-link:hover,
+main .hero-product a.button:any-link:focus-visible {
+  background-color: #006b32;
+  border-color: #006b32;
+  box-shadow: 0 4px 12px rgb(0 107 50 / 45%);
+}
+
+/* Button wrapper reset */
+.hero-product p.button-wrapper {
+  margin: 8px 0 16px;
+}
+
+/* Platform links paragraph (Also available for Mac, Android, iOS) */
+.hero-product > div > div > p:nth-child(4) {
+  font-size: 14px;
+  line-height: 22px;
+  color: rgb(28 34 46);
+  margin: 0 0 8px;
+}
+
+.hero-product > div > div > p:nth-child(4) a:any-link {
+  color: rgb(28 34 46);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.hero-product > div > div > p:nth-child(4) a:hover {
+  color: var(--text-color);
+}
+
+/* Override the generic picture-as-background rule from boilerplate */
+.hero-product picture {
+  position: static;
+  z-index: auto;
+  inset: auto;
+}
+
+.hero-product img {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+}
+
+/* Award badge area (last paragraph with picture + text) */
+.hero-product > div > div > p:last-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgb(28 34 46);
+  margin: 24px 0 0;
+}
+
+/* Award badge image -- render inline at small size */
+.hero-product > div > div > p:last-child picture {
+  position: static;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+}
+
+.hero-product > div > div > p:last-child img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+/* Inline link within description paragraph */
+.hero-product > div > div > p:nth-child(2) a:any-link {
+  color: rgb(28 34 46);
+  text-decoration: underline;
+}
+
+.hero-product > div > div > p:nth-child(2) a:hover {
+  color: var(--text-color);
+}
+
+/* Desktop styles */
+@media (width >= 900px) {
+  .hero-product {
+    padding: 56px 20px 40px;
+    min-height: 460px;
+  }
+
+  .hero-product > div {
+    padding: 0 20px;
+  }
+
+  .hero-product > div > div {
+    max-width: 55%;
+  }
+
+  .hero-product h1 {
+    font-size: 56px;
+    line-height: 72px;
+    margin: 0 0 16px;
+    max-width: none;
+  }
+
+  .hero-product p {
+    font-size: 20px;
+    line-height: 26px;
+    max-width: none;
+  }
+
+  main .hero-product a.button:any-link {
+    padding: 16px 48px;
+    font-size: 18px;
+    min-width: 240px;
+  }
+
+  .hero-product > div > div > p:nth-child(4) {
+    font-size: 16px;
+  }
+
+  .hero-product > div > div > p:last-child {
+    margin-top: 32px;
+  }
+
+  .hero-product > div > div > p:last-child picture {
+    width: 68px;
+    height: 38px;
+  }
+
+  .hero-product > div > div > p:last-child img {
+    width: 68px;
+    height: 38px;
+  }
+}

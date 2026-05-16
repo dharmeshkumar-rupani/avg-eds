@@ -1,0 +1,39 @@
+{
+  "variantName": "hero-article",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:46:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en/signal/what-is-malicious-code",
+    "originPage": "AVG Signal blog article detail page about malicious code",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "standard",
+    "purpose": "article-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "category tag + heading + description + CTA button + alternative links + awards row + hero image side-by-side",
+    "buttonCount": 1,
+    "imageCount": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "blog article detail pages with hero images",
+      "article pages with download CTAs and trust badges",
+      "signal/editorial article pages with side-by-side layout"
+    ],
+    "notSuitableFor": [
+      "simple blog listing heroes without images",
+      "product landing pages with dark backgrounds",
+      "minimal text-only hero sections"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/signal/what-is-malicious-code"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-13T21:46:00.000Z"
+  }
+}

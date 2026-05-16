@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-product",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-ww/homepage#mac",
+    "originPage": "AVG product homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "product-feature",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "2 columns: image + text with heading + paragraph + CTAs",
+    "buttonCount": 2,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "product feature sections with screenshot",
+      "side-by-side image and text layouts",
+      "product showcase with CTA buttons"
+    ],
+    "notSuitableFor": [
+      "compact icon + text strips",
+      "multi-column grids with 3+ items",
+      "award or badge showcase layouts"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ww/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-13T21:29:00.000Z"
+  }
+}

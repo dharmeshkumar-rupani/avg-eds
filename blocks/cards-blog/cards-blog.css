@@ -1,4 +1,10 @@
 /* cards-blog: article listing cards (big + small variants) */
+/* Block: cards-blog
+   Blog article listing cards with thumbnail images and clickable title links.
+   Extracted from: https://www.avg.com/en/signal (.card-big in .cards-flex)
+*/
+
+/* Grid layout - mobile first (single column) */
 .cards-blog > ul {
   list-style: none;
   margin: 0;
@@ -21,6 +27,19 @@
   overflow: hidden;
 }
 
+  gap: 25px;
+}
+
+/* Individual card */
+.cards-blog > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(248 249 250);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* Image container */
 .cards-blog .cards-blog-card-image {
   line-height: 0;
 }
@@ -39,6 +58,26 @@
   color: #212630;
   font-size: 20px;
   font-weight: 600;
+/* Card image - full width, cover fit */
+.cards-blog > ul > li img {
+  width: 100%;
+  aspect-ratio: 418 / 296;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* Text body area */
+.cards-blog .cards-blog-card-body {
+  padding: 12px 15px 14px;
+}
+
+/* Title link styling */
+.cards-blog .cards-blog-card-body a {
+  color: rgb(33 38 48);
+  font-size: 20px;
+  font-weight: 600;
+  font-family: var(--body-font-family);
   line-height: 1.63;
   text-decoration: none;
 }
@@ -80,4 +119,46 @@
   font-weight: 600;
   line-height: 1.5;
   color: #212630;
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+/* Reset EDS button decoration on card links */
+.cards-blog .cards-blog-card-body p.button-wrapper {
+  margin: 0;
+}
+
+.cards-blog .cards-blog-card-body a.button:any-link {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: rgb(33 38 48);
+  font-size: 20px;
+  font-weight: 600;
+  font-family: var(--body-font-family);
+  line-height: 1.63;
+  text-decoration: none;
+  white-space: normal;
+  text-overflow: unset;
+  overflow: visible;
+  text-align: left;
+  justify-content: flex-start;
+  max-width: none;
+}
+
+.cards-blog .cards-blog-card-body a.button:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--text-color);
+  text-decoration: underline;
+}
+
+/* Desktop: 2 columns */
+@media (width >= 900px) {
+  .cards-blog > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

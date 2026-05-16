@@ -1,0 +1,85 @@
+/* Mobile-first base styles */
+.columns-awards {
+  text-align: center;
+}
+
+.columns-awards > div {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.columns-awards > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.columns-awards > div > div p {
+  margin: 0;
+}
+
+.columns-awards > div > div picture {
+  display: block;
+}
+
+.columns-awards > div > div img {
+  display: block;
+  max-width: 140px;
+  max-height: 120px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Wreath columns (first and last) — hide on mobile */
+.columns-awards > div > div:first-child,
+.columns-awards > div > div:last-child {
+  display: none;
+}
+
+.columns-awards > div > div p:last-child {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+}
+
+.columns-awards > div > div p:last-child strong {
+  font-weight: 700;
+}
+
+/* Desktop layout */
+@media (width >= 900px) {
+  .columns-awards > div {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    margin-top: 36px;
+  }
+
+  .columns-awards > div > div {
+    flex: 1 1 auto;
+  }
+
+  /* Show wreath columns on desktop */
+  .columns-awards > div > div:first-child,
+  .columns-awards > div > div:last-child {
+    display: flex;
+    flex: 0 0 auto;
+    width: 160px;
+  }
+
+  /* Wreath images */
+  .columns-awards > div > div:first-child img,
+  .columns-awards > div > div:last-child img {
+    max-width: 160px;
+    max-height: 160px;
+    opacity: 0.9;
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-usp",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-ww/homepage#mac",
+    "originPage": "AVG product homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "usp-badges",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "4 columns each with icon + text",
+    "buttonCount": 0,
+    "imageCount": 4
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "USP/feature badge strips",
+      "trust indicator rows",
+      "compact feature highlights with icons"
+    ],
+    "notSuitableFor": [
+      "product feature layouts with large images",
+      "side-by-side content with paragraphs",
+      "image gallery layouts"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ww/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-13T21:29:00.000Z"
+  }
+}

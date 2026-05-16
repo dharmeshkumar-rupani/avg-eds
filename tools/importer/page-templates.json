@@ -1,0 +1,240 @@
+{
+  "metadata": {
+    "projectType": "da"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.avg.com/en-ww/homepage#mac"
+      ],
+      "description": "AVG product homepage with hero, feature highlights, download CTAs, and platform-specific content",
+      "blocks": [
+        {
+          "name": "hero-product",
+          "instances": ["#top"]
+        },
+        {
+          "name": "columns-usp",
+          "instances": [".section-usp-stripe .usp-stripe"]
+        },
+        {
+          "name": "columns-product",
+          "instances": ["#media-1.media", "#media-2.media", "#media-3.media"]
+        },
+        {
+          "name": "columns-awards",
+          "instances": ["#awards-card .awards-img"]
+        },
+        {
+          "name": "cards-product",
+          "instances": [".included .included-cards-wrapper"]
+        },
+        {
+          "name": "carousel-blog",
+          "instances": ["#blogposts .carousel-slider"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-hero",
+          "name": "Hero",
+          "selector": "#top",
+          "style": null,
+          "blocks": ["hero-product"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-usp-stripe",
+          "name": "USP Stripe",
+          "selector": ".section-usp-stripe",
+          "style": null,
+          "blocks": ["columns-usp"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-media-1",
+          "name": "Product Feature 1",
+          "selector": "#media-1",
+          "style": null,
+          "blocks": ["columns-product"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-awards",
+          "name": "Awards",
+          "selector": "#awards-card",
+          "style": null,
+          "blocks": ["columns-awards"],
+          "defaultContent": ["#awards-card .wrapper > img", "#awards-card .wrapper > h2", "#awards-card .wrapper > .body-2"]
+        },
+        {
+          "id": "section-media-2",
+          "name": "Product Feature 2",
+          "selector": "#media-2",
+          "style": null,
+          "blocks": ["columns-product"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-media-3",
+          "name": "Product Feature 3",
+          "selector": "#media-3",
+          "style": "dark",
+          "blocks": ["columns-product"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-included",
+          "name": "Included Products",
+          "selector": ".inverse.included",
+          "style": "dark",
+          "blocks": ["cards-product"],
+          "defaultContent": [".included .included-title .h4"]
+        },
+        {
+          "id": "section-blogposts",
+          "name": "Blog Posts",
+          "selector": "#blogposts",
+          "style": null,
+          "blocks": ["carousel-blog"],
+          "defaultContent": ["#blogposts .title h2", "#blogposts .link-all a"]
+        },
+        {
+          "id": "section-teaser",
+          "name": "Download Teaser",
+          "selector": "#teaser",
+          "style": "green",
+          "blocks": [],
+          "defaultContent": ["#teaser .ico img", "#teaser .ico p", "#teaser .button"]
+        }
+      ]
+    },
+    {
+      "name": "blog-homepage",
+      "urls": [
+        "https://www.avg.com/en/signal"
+      ],
+      "description": "AVG Signal blog listing page with featured articles, category navigation, and article cards",
+      "blocks": [
+        {
+          "name": "hero-blog",
+          "instances": [".hp-hero-banner.hero-banner"]
+        },
+        {
+          "name": "cards-blog",
+          "instances": ["#security .hub-wrap", "#privacy .hub-wrap", "#performance .hub-wrap"]
+        },
+        {
+          "name": "tabs-sidebar",
+          "instances": [".sidebar-homepage .sidebar-category-tab"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-hero",
+          "name": "Hero Banner",
+          "selector": ".hp-hero-banner.hero-banner",
+          "style": null,
+          "blocks": ["hero-blog"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-security",
+          "name": "Security Category",
+          "selector": "#security.category-wrapper",
+          "style": null,
+          "blocks": ["cards-blog"],
+          "defaultContent": ["#security .category-link-homepage-listing", "#security h2"]
+        },
+        {
+          "id": "section-privacy",
+          "name": "Privacy Category",
+          "selector": "#privacy.category-wrapper",
+          "style": null,
+          "blocks": ["cards-blog"],
+          "defaultContent": ["#privacy .category-link-homepage-listing", "#privacy h2"]
+        },
+        {
+          "id": "section-performance",
+          "name": "Performance Category",
+          "selector": "#performance.category-wrapper",
+          "style": null,
+          "blocks": ["cards-blog"],
+          "defaultContent": ["#performance .category-link-homepage-listing", "#performance h2"]
+        },
+        {
+          "id": "section-sidebar",
+          "name": "Sidebar",
+          "selector": ".sidebar-homepage",
+          "style": "sidebar",
+          "blocks": ["tabs-sidebar"],
+          "defaultContent": [".sidebar-homepage .homepage-tags-desktop h4", ".sidebar-homepage .homepage-tags-desktop .tags"]
+        }
+      ]
+    },
+    {
+      "name": "blog-article",
+      "urls": [
+        "https://www.avg.com/en/signal/what-is-malicious-code"
+      ],
+      "description": "AVG Signal blog detail page with article content, author info, and related articles",
+      "blocks": [
+        {
+          "name": "hero-article",
+          "instances": [".container-fluid.bg-white.center-hero"]
+        },
+        {
+          "name": "fragment",
+          "instances": ["#sidebar .hub-cta-desktop"]
+        },
+        {
+          "name": "tabs-sidebar",
+          "instances": ["#sidebar .sidebar-category-tab"]
+        },
+        {
+          "name": "embed-reviews",
+          "instances": [".tp-carousel .trustpilot-widget"]
+        },
+        {
+          "name": "carousel-blog",
+          "instances": [".article-slider-post .article-slider-carousel"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-hero",
+          "name": "Article Hero",
+          "selector": ".container-fluid.bg-white.center-hero",
+          "style": null,
+          "blocks": ["hero-article"],
+          "defaultContent": []
+        },
+        {
+          "id": "section-article-body",
+          "name": "Article Body",
+          "selector": ".body-grey.article",
+          "style": null,
+          "blocks": ["fragment", "tabs-sidebar"],
+          "defaultContent": [".post-info .hub-topic", ".art-title h1", ".art-title p", ".article-body"]
+        },
+        {
+          "id": "section-reviews",
+          "name": "Trustpilot Reviews",
+          "selector": ".tp-carousel",
+          "style": null,
+          "blocks": ["embed-reviews"],
+          "defaultContent": [".tp-carousel-heading"]
+        },
+        {
+          "id": "section-related",
+          "name": "Related Articles",
+          "selector": ".article-slider-post",
+          "style": null,
+          "blocks": ["carousel-blog"],
+          "defaultContent": [".article-slider-headline"]
+        }
+      ]
+    }
+  ]
+}

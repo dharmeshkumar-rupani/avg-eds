@@ -1,0 +1,39 @@
+{
+  "variantName": "columns-awards",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-05-13T21:29:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.avg.com/en-ww/homepage#mac",
+    "originPage": "AVG product homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "awards-showcase",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "3 columns each with award badge image + year + award name text",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "award/certification badge displays",
+      "trust indicator rows with images and text",
+      "partner logo showcases with descriptions"
+    ],
+    "notSuitableFor": [
+      "product feature sections with large images",
+      "side-by-side text + image layouts",
+      "card grids with CTAs"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en-ww/homepage"],
+    "reuseCount": 1,
+    "lastUsed": "2026-05-13T21:29:00.000Z"
+  }
+}

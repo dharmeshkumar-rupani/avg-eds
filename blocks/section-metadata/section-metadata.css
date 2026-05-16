@@ -1,0 +1,4 @@
+/* section-metadata block is purely functional — no visual styles needed */
+.section-metadata-wrapper {
+  display: none;
+}
