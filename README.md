@@ -1,9 +1,10 @@
-# Your Project's Title...
+# AVG EDS Site
 Your project's description...
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.aem.page/
-- Live: https://main--{repo}--{owner}.aem.live/
+- Preview: https://main--avg-eds--dharmeshkumar-rupani.aem.page/en-ww/homepage
+- Live: https://main--avg-eds--dharmeshkumar-rupani.aem.live/en-ww/homepage
+- Blog homepage: https://main--avg-eds--dharmeshkumar-rupani.aem.page/en/signal
 
 ## Documentation
 
